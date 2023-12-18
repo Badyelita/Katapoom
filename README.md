@@ -4,6 +4,8 @@ Macarena Explotadora
 Con el cinturon no porfavor!
 > [!CAUTION]
 > MACARENA EXPLOTADORA
+> > [!WARNING]  
+> DANI LUDOPATA
 
 EJEMPLOS MARKDOWN PARA README
 > [!NOTE]  
