@@ -26,5 +26,10 @@ public class CamJugador : MonoBehaviour
 
         yRotacion += ratonX;
         xRotacion -= ratonY;
+        xRotacion = Mathf.Clamp(xRotacion, -90f, 90f);
+
+        //Rotacion de camara y orientacion
+        transform.rotation = Quaternion.Euler(xRotacion, yRotacion, 0);
+        orientacion.rotation=Quaternion.Euler(0,yRotacion, 0);
     }
 }
