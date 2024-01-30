@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class draggable : MonoBehaviour
 {
-    Vector3 mousePosition;
+    private Vector3 mousePosition;
     private Vector3 GetMousePos() {
         return Camera.main.WorldToScreenPoint(transform.position);
     }
