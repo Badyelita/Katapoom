@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class draggable : MonoBehaviour
 {
-    //private bool isDraggable = true;
-    //estoy modificando el valor del eje x e y del prefab, no del objeto en si
+    Vector3 mousePosition;
+    private Vector3 GetMousePos() {
+        return Camera.main.WorldToScreenPoint(transform.position);
+    }
 
-    void Update()
+    private void OnMouseDown()
     {
-        float yInput = Input.GetAxis("Mouse Y");
-        float xInput = Input.GetAxis("Mouse X");
+        mousePosition = Input.mousePosition - GetMousePos();
+    }
 
-        Debug.Log("Eje x: " + yInput);
-        Debug.Log("Eje y: " + xInput);
-
-        Vector3 mousePos = new Vector3(xInput,yInput);
-
-        transform.position = mousePos;
-
+    private void OnMouseDrag()
+    {
+        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - mousePosition);
     }
 }
