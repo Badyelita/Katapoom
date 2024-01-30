@@ -43,8 +43,6 @@ public class RaycastStart : MonoBehaviour
             Move();
         }
 
-        Debug.Log(startGame);
-
 
     }
 
