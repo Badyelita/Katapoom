@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovimientoJugador : MonoBehaviour
+public class PlayerMov : MonoBehaviour
 {
-    [Header("Movimiento")]
-    public float velocidadMovimiento;
+    [Header("Movement")]
+    public float movementSpeed;
 
     public float groundDrag;
 
-    public Transform orientacion;
+    public Transform orientation;
 
     float horizontalInput;
     float verticalInput;
 
-    Vector3 direccionMov;
+    Vector3 movementDir;
 
     Rigidbody rb;
 
@@ -26,36 +26,36 @@ public class MovimientoJugador : MonoBehaviour
 
     private void Update()
     {
-        MiInput();
-        ControlVelocidad();
+        MyInput();
+        SpeedControl();
         rb.drag = groundDrag;
     }
 
     private void FixedUpdate()
     {
-        MoverJugador();
+        MovePlayer();
     }
 
-    private void MiInput()
+    private void MyInput()
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
     }
 
-    private void MoverJugador()
+    private void MovePlayer()
     {
         //Calculamos la direccion del movimiento
-        direccionMov=orientacion.forward * verticalInput + orientacion.right * horizontalInput;
+        movementDir=orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        rb.AddForce(direccionMov.normalized * velocidadMovimiento * 10f, ForceMode.Force);
+        rb.AddForce(movementDir.normalized * movementSpeed * 10f, ForceMode.Force);
     }
 
-    private void ControlVelocidad()
+    private void SpeedControl()
     {
         Vector3 flatVel=new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        if (flatVel.magnitude>velocidadMovimiento)
+        if (flatVel.magnitude>movementSpeed)
         {
-            Vector3 velocidadLimit=flatVel.normalized*velocidadMovimiento;
+            Vector3 velocidadLimit=flatVel.normalized*movementSpeed;
             rb.velocity = new Vector3(velocidadLimit.x, rb.velocity.y, velocidadLimit.z);
         }
     }

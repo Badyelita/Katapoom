@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovCamara : MonoBehaviour
+public class CameraMov : MonoBehaviour
 {
-    public Transform posicionCamara;
+    public Transform cameraPos;
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = posicionCamara.position;
+        transform.position = cameraPos.position;
     }
 }
