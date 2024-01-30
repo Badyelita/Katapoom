@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 126991917}
   m_Layer: 0
-  m_Name: PosicionCamara
+  m_Name: CameraPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,7 +218,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402196182}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -336,9 +336,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df7d0c20ef6b6874d81764574b95e5c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: 7
+  movementSpeed: 7
   groundDrag: 5
-  orientacion: {fileID: 1722529067}
+  orientation: {fileID: 1722529067}
 --- !u!1 &511657097
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 1088705795}
   - component: {fileID: 1088705797}
   m_Layer: 0
-  m_Name: CamaraJugador
+  m_Name: PlayerCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -540,7 +540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensX: 400
   sensY: 400
-  orientacion: {fileID: 1722529067}
+  orientation: {fileID: 1722529067}
 --- !u!1 &1242493618
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,7 +586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ed3f8c44f8973b438e55d413e8674ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posicionCamara: {fileID: 126991917}
+  cameraPos: {fileID: 126991917}
 --- !u!1 &1719609881
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,7 +704,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1722529067}
   m_Layer: 0
-  m_Name: Orientacion
+  m_Name: Orientation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
