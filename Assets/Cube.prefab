@@ -119,6 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 798d34e3b4151194490e786a6a9d392f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  downForce: -40
+  _lineRenderer: {fileID: 488914928638541553, guid: 98bb8297b0a9f9b4da67945ed6edf28d, type: 3}
+  _lineSegmentCount: 20
 --- !u!54 &-4088406684858073800
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -141,8 +144,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Constraints: 112
+  m_CollisionDetection: 1
