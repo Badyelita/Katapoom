@@ -10,7 +10,10 @@ public class RaycastStart : MonoBehaviour
     RaycastHit hit;
     public GameObject player;
     public GameObject target;
-    bool startGame = false;
+    public GameObject exit;
+    bool canMove = false;
+    public bool inGame = false;
+    public bool exitGame = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,12 +24,12 @@ public class RaycastStart : MonoBehaviour
     // Update is called once per frame
     
 
-    void Update()
+    void FixedUpdate()
     {
-
+        //Creamos el Rayo
         Ray ray = new Ray(transform.position, transform.forward);
-
-
+        Debug.DrawRay(transform.position, transform.forward*10, Color.green);
+        //Lanzamos el raycast para reconocer la mesa si el personaje la mira
         if (Physics.Raycast(ray, out hit, maxDistance, whatToDetect))
         {
             Debug.DrawRay(ray.origin, ray.direction * 30f, Color.green);
@@ -35,13 +38,25 @@ public class RaycastStart : MonoBehaviour
 
             if (Input.GetKey(KeyCode.E))
             {
-                startGame = true;
+                canMove = true;
             }
 
-        } if (startGame)
+        } if (canMove)
         {
             Move();
         }
+
+        if (inGame && Input.GetKey(KeyCode.Escape))
+        {
+            exitGame = true; 
+           
+        }
+        if (exitGame)
+        {
+            ExitGame();
+        }
+
+        
 
 
     }
@@ -50,11 +65,25 @@ public class RaycastStart : MonoBehaviour
     void Move()
     {
         player.transform.position = Vector3.MoveTowards(player.transform.position, target.transform.position, Time.deltaTime);
-
+        player.GetComponent<PlayerMov>().enabled = false;
         
-        if(target.transform.position == player.transform.position) {
-            startGame = false;
+        if (target.transform.position == player.transform.position) {
+            canMove = false;
+            inGame = true;
         }
         
+    }
+
+
+    void ExitGame()
+    {
+            player.transform.position = Vector3.MoveTowards(player.transform.position, exit.transform.position, Time.deltaTime);
+            
+        
+        if (player.transform.position == exit.transform.position)
+        {
+            player.GetComponent<PlayerMov>().enabled = true;
+            exitGame = false;
+        }
     }
 }
