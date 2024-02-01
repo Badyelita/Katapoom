@@ -9,7 +9,7 @@ public class PantallaCompleta : MonoBehaviour
 
     void Start()
     {
-        if (Screen.fullScreen)                              //
+        if (Screen.fullScreen)                              
         {
             toggle.isOn = true;
         }
