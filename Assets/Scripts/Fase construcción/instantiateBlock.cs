@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class instantiateBlock : MonoBehaviour
 {
+    public static instantiateBlock instance { get; private set; }
+
+    private void Awake() {
+        if (instance != null && instance != this) {
+            Destroy(this);
+        } else { 
+            instance = this;
+        }
+    }
+
+    //Esta clase se encarga de spawnear el bloque
 
     [SerializeField] GameObject block;
-    
-    private Vector3 vector = new(2f, 1.1f, 1f);
+    public GameObject spawnBlock;
+    public bool buildingUp;
+    public bool onTheArena;
 
     public void InstantiateBlock() {
-        Instantiate(block, vector, Quaternion.identity);
+        buildingUp = true;
+        spawnBlock = Instantiate(block);
     }
 }
