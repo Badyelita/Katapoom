@@ -23,13 +23,13 @@ public class ChangeCam : MonoBehaviour
 
     void Change()
     {
-        if (Input.GetKey(KeyCode.Backspace))
+        if (GameManager.Instance.gameState==GameState.Playing)
         {
             cam1.GetComponent<CinemachineVirtualCamera>().enabled=false;
             cam2.GetComponent<CinemachineVirtualCamera>().enabled = true;
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (GameManager.Instance.gameState==GameState.Ended)
         {
             cam1.GetComponent<CinemachineVirtualCamera>().enabled = true;
             cam2.GetComponent<CinemachineVirtualCamera>().enabled = false;

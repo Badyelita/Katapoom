@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &30916363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 30916365}
+  - component: {fileID: 30916364}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &30916364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30916363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666a5b5a337c6444fb6256f521a61305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: 0
+--- !u!4 &30916365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30916363}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &126991916
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,7 +344,6 @@ GameObject:
   - component: {fileID: 436790344}
   - component: {fileID: 436790346}
   - component: {fileID: 436790347}
-  - component: {fileID: 436790348}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -381,26 +425,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam1: {fileID: 1829788268}
   cam2: {fileID: 962581166}
---- !u!114 &436790348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 436790343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50852e6ce9534844db7be9ffdb541a4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whatToDetect:
-    serializedVersion: 2
-    m_Bits: 64
-  player: {fileID: 436790343}
-  target: {fileID: 2094150805}
-  exit: {fileID: 437013941}
-  inGame: 0
-  exitGame: 0
 --- !u!1 &437013941
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +450,7 @@ Transform:
   m_GameObject: {fileID: 437013941}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 32.88, y: 0.52, z: 36.39}
+  m_LocalPosition: {x: 26.65, y: 0.52, z: 36.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1442,6 +1466,7 @@ GameObject:
   - component: {fileID: 1829788272}
   - component: {fileID: 1829788271}
   - component: {fileID: 1829788270}
+  - component: {fileID: 1829788273}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -1519,6 +1544,26 @@ Transform:
   - {fileID: 1815162263}
   m_Father: {fileID: 1242493619}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1829788273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829788268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50852e6ce9534844db7be9ffdb541a4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatToDetect:
+    serializedVersion: 2
+    m_Bits: 64
+  player: {fileID: 436790343}
+  target: {fileID: 2094150805}
+  exit: {fileID: 437013941}
+  inGame: 0
+  exitGame: 0
 --- !u!1 &1969962453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,3 +1820,4 @@ SceneRoots:
   - {fileID: 2094150806}
   - {fileID: 437013942}
   - {fileID: 962581168}
+  - {fileID: 30916365}

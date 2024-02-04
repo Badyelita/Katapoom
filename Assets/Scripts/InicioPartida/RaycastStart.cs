@@ -39,6 +39,7 @@ public class RaycastStart : MonoBehaviour
             if (Input.GetKey(KeyCode.E))
             {
                 canMove = true;
+                
             }
 
         } if (canMove)
@@ -61,29 +62,35 @@ public class RaycastStart : MonoBehaviour
 
     }
 
-
+    //Metodo para moverse a la silla para empezar la partida
     void Move()
     {
+        //Se mueve el jugador a un punto que hemos definido
         player.transform.position = Vector3.MoveTowards(player.transform.position, target.transform.position, Time.deltaTime);
+        //Hacemos que el jugador no se pueda mover
         player.GetComponent<PlayerMov>().enabled = false;
-        
+        //Si el jugador ha llegado a la posicion designada puede salir de esta dandole al escape
         if (target.transform.position == player.transform.position) {
             canMove = false;
             inGame = true;
+            //Se actualiza el estado del juego
+            GameManager.Instance.UpdateGameState(GameState.Playing);
         }
         
     }
 
-
+    
     void ExitGame()
     {
-            player.transform.position = Vector3.MoveTowards(player.transform.position, exit.transform.position, Time.deltaTime);
+
+        player.transform.position = Vector3.MoveTowards(player.transform.position, exit.transform.position, Time.deltaTime);
             
         
         if (player.transform.position == exit.transform.position)
         {
             player.GetComponent<PlayerMov>().enabled = true;
             exitGame = false;
+            GameManager.Instance.UpdateGameState(GameState.Ended);
         }
     }
 }
