@@ -11,7 +11,7 @@ public class draggable : MonoBehaviour {
     private bool canMove;
 
     private void OnMouseOver() {
-        if (!instantiateBlock.instance.buildingUp && Input.GetMouseButtonDown(1)) {
+        if (!instantiateBlock.instance.buildingUp && Input.GetMouseButtonDown(1) && canMove) {
             Destroy(gameObject);
         }
     }
