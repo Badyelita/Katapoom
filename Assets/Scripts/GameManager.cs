@@ -5,7 +5,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum GameState { Ready, Playing, Ended };
+public enum GameState { Ready, Playing, Paused, Ended };
 
 public class GameManager : MonoBehaviour
 {
@@ -54,6 +54,9 @@ public class GameManager : MonoBehaviour
 
             case GameState.Ended:
             break;
+
+            case GameState.Paused:
+            break;
             
             default:
             throw new ArgumentOutOfRangeException(nameof(newGameState), newGameState, null);
@@ -69,5 +72,7 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+
 
 }

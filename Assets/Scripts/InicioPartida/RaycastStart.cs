@@ -47,7 +47,7 @@ public class RaycastStart : MonoBehaviour
             Move();
         }
 
-        if (inGame && Input.GetKey(KeyCode.Escape))
+        if (inGame && Input.GetKey(KeyCode.Backspace))
         {
             exitGame = true; 
            
