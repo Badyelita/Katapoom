@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7544763875793729748}
   - component: {fileID: -7110608547483943812}
   - component: {fileID: -8279106895619994170}
+  - component: {fileID: -72412387645844089}
   m_Layer: 0
   m_Name: Block
   m_TagString: Block
@@ -119,5 +120,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bc: {fileID: -7110608547483943812}
-  previewBlock: {fileID: 8442688151887397450, guid: 80e52dfc3a59f1046a1159816df5874d, type: 3}
-  block: {fileID: 8402551008408309344}
+--- !u!114 &-72412387645844089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8402551008408309344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6920ada526bc0564c8e8f2ad6012a52c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isSlime: 0
