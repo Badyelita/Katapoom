@@ -342,7 +342,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 173995930}
-        m_TargetAssemblyTypeName: instantiateBlock, Assembly-CSharp
+        m_TargetAssemblyTypeName: SpawnBlock, Assembly-CSharp
         m_MethodName: InstantiateBlock
         m_Mode: 1
         m_Arguments:
@@ -400,12 +400,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 173995925}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 579a98a10a7a178429b66f8c8831cfa4, type: 3}
+  m_Script: {fileID: 11500000, guid: ab0676dd9144edb4fa89d495214c18be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  block: {fileID: 8442688151887397450, guid: 80e52dfc3a59f1046a1159816df5874d, type: 3}
-  spawnedBlock: {fileID: 0}
+  block: {fileID: 8402551008408309344, guid: 97456772dcac55942ab50a1560b5ab4a, type: 3}
+  spawnBlock: {fileID: 0}
   buildingUp: 0
+  onTheArena: 0
 --- !u!1 &354768311
 GameObject:
   m_ObjectHideFlags: 0
