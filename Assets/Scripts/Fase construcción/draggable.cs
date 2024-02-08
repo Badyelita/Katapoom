@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Draggable : MonoBehaviour {
+public class draggable : MonoBehaviour {
     [SerializeField] private BoxCollider bc;
     RaycastHit hit;
     Ray casepoint;
@@ -11,13 +11,13 @@ public class Draggable : MonoBehaviour {
     private bool canMove;
 
     private void OnMouseOver() {
-        if (!SpawnBlock.instance.buildingUp && Input.GetMouseButtonDown(1) && canMove) {
+        if (!instantiateBlock.instance.buildingUp && Input.GetMouseButtonDown(1) && canMove) {
             Destroy(gameObject);
         }
     }
 
     private void OnMouseDrag() {
-        if (!SpawnBlock.instance.buildingUp) {
+        if (!instantiateBlock.instance.buildingUp) {
             bc.enabled = false;
             Vector3 mouse = Input.mousePosition;
             Ray casepoint = Camera.main.ScreenPointToRay(mouse);
