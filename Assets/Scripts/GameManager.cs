@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,8 +11,9 @@ public enum GameState { Ready, Playing, Paused, Ended };
 public class GameManager : MonoBehaviour
 {
     public GameState gameState = GameState.Ready;
-
+    public int countBlocks = 0;
     public static GameManager Instance { get; private set; }
+    
 
     
     void Awake()
@@ -73,6 +75,8 @@ public class GameManager : MonoBehaviour
         
     }
 
-
+    public void UpdateHud() {
+        GameObject.FindGameObjectWithTag("countBlock").GetComponent<TMP_Text>().SetText(String.Format("{0}/16 Bloques", countBlocks));
+    }
 
 }
