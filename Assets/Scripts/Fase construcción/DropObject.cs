@@ -9,8 +9,11 @@ public class DropObject : MonoBehaviour
     public GameObject block;
 
     void Update() {
-        if (Input.GetMouseButtonDown(0) && instantiateBlock.instance.buildingUp && instantiateBlock.instance.onTheArena) {
+        if (Input.GetMouseButtonDown(0) && instantiateBlock.instance.buildingUp && instantiateBlock.instance.onTheArena && GameManager.Instance.countBlocks <= 15) {
             Instantiate(block, instantiateBlock.instance.spawnBlock.transform.position, instantiateBlock.instance.spawnBlock.transform.rotation);
+            GameManager.Instance.countBlocks += 1;
+            
+            GameManager.Instance.UpdateHud();
         }
         if (Input.GetMouseButtonDown(1) && instantiateBlock.instance.buildingUp) {
             Destroy(instantiateBlock.instance.spawnBlock);
