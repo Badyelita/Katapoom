@@ -13,6 +13,9 @@ public class draggable : MonoBehaviour {
     private void OnMouseOver() {
         if (!instantiateBlock.instance.buildingUp && Input.GetMouseButtonDown(1) && canMove) {
             Destroy(gameObject);
+            GameManager.Instance.countBlocks -= 1;
+
+            GameManager.Instance.UpdateHud();
         }
     }
 
@@ -25,6 +28,10 @@ public class draggable : MonoBehaviour {
 
             if (Physics.Raycast(casepoint, out hit, Mathf.Infinity) && (hit.collider.gameObject.CompareTag("Arena") || hit.collider.gameObject.CompareTag("Block")) && canMove) {
                 transform.position = new Vector3(hit.point.x, hit.point.y + transform.localScale.y / 2, hit.point.z);
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                transform.Rotate(new Vector3(0, 90));
             }
         }
     }

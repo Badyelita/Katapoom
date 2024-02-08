@@ -7,6 +7,7 @@ TagManager:
   - Block
   - Floor
   - Arena
+  - countBlock
   layers:
   - Default
   - TransparentFX
