@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu de inicio.unity
     guid: 7670d54421fde3e4593de7049e506f72
+  - enabled: 0
+    path: Assets/Scenes/PruebaMovimiento.unity
+    guid: 11dd87a86c88c7a4bad1d3908bf2b066
   m_configObjects: {}
