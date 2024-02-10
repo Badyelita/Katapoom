@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RaycastStart : MonoBehaviour
 {
@@ -15,6 +18,9 @@ public class RaycastStart : MonoBehaviour
     public bool inGame = false;
     public bool exitGame = false;
 
+    [SerializeField] Button block;
+    [SerializeField] TMP_Text text;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,14 +34,9 @@ public class RaycastStart : MonoBehaviour
     {
         //Creamos el Rayo
         Ray ray = new Ray(transform.position, transform.forward);
-        Debug.DrawRay(transform.position, transform.forward*10, Color.green);
         //Lanzamos el raycast para reconocer la mesa si el personaje la mira
         if (Physics.Raycast(ray, out hit, maxDistance, whatToDetect))
         {
-            Debug.DrawRay(ray.origin, ray.direction * 30f, Color.green);
-            Debug.Log("Distancia:" + hit.distance);
-            Debug.Log("Punto de impacto:" + hit.point);
-
             if (Input.GetKey(KeyCode.E))
             {
                 canMove = true;
@@ -55,6 +56,14 @@ public class RaycastStart : MonoBehaviour
         if (exitGame)
         {
             ExitGame();
+        }
+
+        if(GameManager.Instance.gameState==GameState.Playing)
+        {
+            text.gameObject.SetActive(true);
+            block.gameObject.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         
@@ -90,7 +99,7 @@ public class RaycastStart : MonoBehaviour
         {
             player.GetComponent<PlayerMov>().enabled = true;
             exitGame = false;
-            GameManager.Instance.UpdateGameState(GameState.Ended);
+            GameManager.Instance.UpdateGameState(GameState.Ready);
         }
     }
 }

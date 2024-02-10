@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1290,7 +1290,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48.5
+  m_fontSize: 24.8
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1352,7 +1352,7 @@ GameObject:
   - component: {fileID: 1472629823}
   - component: {fileID: 1472629822}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: ContadorBloques
   m_TagString: countBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1424,7 +1424,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54.7
+  m_fontSize: 25.35
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
