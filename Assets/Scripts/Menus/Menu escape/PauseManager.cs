@@ -40,7 +40,6 @@ public class PauseManager : MonoBehaviour
         GameManager.Instance.UpdateGameState(GameState.Paused);
         Time.timeScale=0f;
         isPaused=true;
-        Debug.Log(isPaused);
         
     }
 

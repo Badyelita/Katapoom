@@ -10,7 +10,7 @@ public class controladorVolumenDiferentes : MonoBehaviour
 
     public Slider BGMSlider;        //BGM (Sonido de fondo) SFX (sonido de canvas)
     public Slider SFXSlider;
-    public Slider MasterSlider;
+    public Slider MasterSlider; 
     public Slider CanvasSlider;
     
     public Image imagenMute1;
@@ -70,6 +70,8 @@ public class controladorVolumenDiferentes : MonoBehaviour
     {
         BGMSlider.value = PlayerPrefs.GetFloat("BGMVolume");
         SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+        MasterSlider.value = PlayerPrefs.GetFloat("MasterVolume");
+        CanvasSlider.value = PlayerPrefs.GetFloat("CanvasVolume");
 
         SetBGMVolume();
         SetSFXVolume();
