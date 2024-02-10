@@ -22,7 +22,11 @@ public class instantiateBlock : MonoBehaviour
     public bool onTheArena;
 
     public void InstantiateBlock() {
-        buildingUp = true;
-        spawnBlock = Instantiate(block);
+        if(!buildingUp)
+        {
+            buildingUp = true;
+            spawnBlock = Instantiate(block);
+        }
+        
     }
 }

@@ -29,7 +29,7 @@ public class ChangeCam : MonoBehaviour
             cam2.GetComponent<CinemachineVirtualCamera>().enabled = true;
         }
 
-        if (GameManager.Instance.gameState==GameState.Ended)
+        if (GameManager.Instance.gameState==GameState.Ready)
         {
             cam1.GetComponent<CinemachineVirtualCamera>().enabled = true;
             cam2.GetComponent<CinemachineVirtualCamera>().enabled = false;

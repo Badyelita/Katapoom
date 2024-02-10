@@ -29,7 +29,7 @@ public class PantallaCompleta : MonoBehaviour
     {
         resoluciones = Screen.resolutions;                  //Guarda todas las resoluciones disponibles, del ordenador que ejecuta el juego, en el array resoluciones
         resolusionesDropdown.ClearOptions();                //Borra las opciones que trae unity por defecto
-        List<string> opciones = new List<string>();         //creamos una lista para nombrar el tamaño de las resoluciones que vamos a mostrar
+        List<string> opciones = new List<string>();         //creamos una lista para nombrar el tamaï¿½o de las resoluciones que vamos a mostrar
         int resolucionActual = 0;
 
         for (int i = 0; i < resoluciones.Length; i++)       //este for es, detecta las resoluciones que tiene nuestro pc y crea el nombre de todas ellas y lo mete en la lista

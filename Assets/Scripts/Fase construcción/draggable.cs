@@ -7,9 +7,9 @@ public class draggable : MonoBehaviour {
     [SerializeField] private BoxCollider bc;
     RaycastHit hit;
     Ray casepoint;
+    [SerializeField] private LayerMask whatToDetect;
 
     private bool canMove;
-
     private void OnMouseOver() {
         if (!instantiateBlock.instance.buildingUp && Input.GetMouseButtonDown(1) && canMove) {
             Destroy(gameObject);
@@ -42,7 +42,7 @@ public class draggable : MonoBehaviour {
 
     private void Update() {
         casepoint = new Ray(transform.position, transform.up);
-        if (Physics.Raycast(casepoint, out hit, Mathf.Infinity)) {
+        if (Physics.Raycast(casepoint, out hit, Mathf.Infinity, whatToDetect)) {
             canMove = false;
         }
         else {
