@@ -65,6 +65,13 @@ public class RaycastStart : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+        if(GameManager.Instance.gameState==GameState.Ready)
+        {
+            text.gameObject.SetActive(false);
+            block.gameObject.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
 
         
 
