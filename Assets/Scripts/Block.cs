@@ -5,7 +5,30 @@ using UnityEngine;
 public class Block : MonoBehaviour
 {
 
-    [SerializeField] private float mass = 1f;
+    public float mass;
 
-    [SerializeField] private bool isSlime, isHeavy, isRebound, isLastChance, isRandom;
+    [SerializeField] public bool isSlime, isHeavy, isRebound, isLastChance, isRandom;
+
+    public void SetNormalBlock()
+    {
+        mass = 1f;
+    }
+    public void SetSlimeBlock() {
+    }
+
+    public void SetHeavyBlock() {
+        mass = 2f;
+    }
+
+    public void SetReboundBlock()
+    {
+    }
+
+    public void SetLastChanceBlock()
+    {
+    }
+
+    public void SetRandomBlock()
+    {
+    }
 }

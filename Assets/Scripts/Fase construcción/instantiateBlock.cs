@@ -27,6 +27,5 @@ public class instantiateBlock : MonoBehaviour
             buildingUp = true;
             spawnBlock = Instantiate(block);
         }
-        
     }
 }
