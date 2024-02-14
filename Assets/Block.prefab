@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6920ada526bc0564c8e8f2ad6012a52c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 1
+  mass: 2
   isSlime: 0
   isHeavy: 0
   isRebound: 0

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -269,7 +269,6 @@ GameObject:
   - component: {fileID: 173995929}
   - component: {fileID: 173995928}
   - component: {fileID: 173995927}
-  - component: {fileID: 173995930}
   m_Layer: 5
   m_Name: Boton bloque normal
   m_TagString: Untagged
@@ -341,9 +340,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 173995930}
+      - m_Target: {fileID: 2077484365}
         m_TargetAssemblyTypeName: instantiateBlock, Assembly-CSharp
         m_MethodName: InstantiateBlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2036937320}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PressedNormalBlock
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -391,22 +402,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173995925}
   m_CullTransparentMesh: 1
---- !u!114 &173995930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173995925}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 579a98a10a7a178429b66f8c8831cfa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  block: {fileID: 8442688151887397450, guid: 80e52dfc3a59f1046a1159816df5874d, type: 3}
-  spawnBlock: {fileID: 0}
-  buildingUp: 0
-  onTheArena: 0
 --- !u!1 &354768311
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,7 +420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &354768312
 RectTransform:
   m_ObjectHideFlags: 0
@@ -441,10 +436,10 @@ RectTransform:
   - {fileID: 21281455}
   m_Father: {fileID: 2077484364}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -97, y: -160}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0.323, y: 0.185}
+  m_AnchorMax: {x: 0.48400003, y: 0.23900001}
+  m_AnchoredPosition: {x: -0.5, y: 0}
+  m_SizeDelta: {x: -1, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &354768313
 MonoBehaviour:
@@ -489,7 +484,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 354768314}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2077484365}
+        m_TargetAssemblyTypeName: instantiateBlock, Assembly-CSharp
+        m_MethodName: InstantiateBlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2036937320}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: PressedHeavyBlock
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &354768314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1424,7 +1443,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.35
+  m_fontSize: 27.5
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1636,8 +1655,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666a5b5a337c6444fb6256f521a61305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: 0
+  gameState: 1
   countBlocks: 0
+  block: {fileID: 8402551008408309344, guid: 97456772dcac55942ab50a1560b5ab4a, type: 3}
 --- !u!4 &2036937321
 Transform:
   m_ObjectHideFlags: 0
@@ -1665,6 +1685,7 @@ GameObject:
   - component: {fileID: 2077484363}
   - component: {fileID: 2077484362}
   - component: {fileID: 2077484361}
+  - component: {fileID: 2077484365}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1757,6 +1778,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2077484365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077484360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579a98a10a7a178429b66f8c8831cfa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  block: {fileID: 8442688151887397450, guid: 80e52dfc3a59f1046a1159816df5874d, type: 3}
+  spawnBlock: {fileID: 0}
+  buildingUp: 0
+  onTheArena: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
