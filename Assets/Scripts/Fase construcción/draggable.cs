@@ -42,7 +42,7 @@ public class draggable : MonoBehaviour {
 
     private void Update() {
         casepoint = new Ray(transform.position, transform.up);
-        if (Physics.Raycast(casepoint, out hit, Mathf.Infinity, whatToDetect)) {
+        if (Physics.Raycast(casepoint, out hit, 0.1f, whatToDetect)) {
             canMove = false;
         }
         else {
