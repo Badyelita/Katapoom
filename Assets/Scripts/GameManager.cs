@@ -6,10 +6,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum GameState { Ready, Playing, Paused, Ended };
+public enum PlayingState { None, Defense, Attack};
 
 public class GameManager : MonoBehaviour
 {
     public GameState gameState = GameState.Ready;
+    public PlayingState playingState = PlayingState.None;
     public int countBlocks = 0;
     public GameObject block;
     public static GameManager Instance { get; private set; }
@@ -63,6 +65,11 @@ public class GameManager : MonoBehaviour
             default:
             throw new ArgumentOutOfRangeException(nameof(newGameState), newGameState, null);
         }
+    }
+
+    public void UpdatePlayingState(PlayingState newPlayingState)
+    {
+        playingState=newPlayingState;
     }
 
     void HandleChangePovZenithal()

@@ -7,6 +7,7 @@ public class ChangeCam : MonoBehaviour
 {
     [SerializeField] GameObject cam1;
     [SerializeField] GameObject cam2;
+    [SerializeField] GameObject cam3;
     RaycastStart raycastStart;
     // Start is called before the first frame update
     void Start()
@@ -23,16 +24,24 @@ public class ChangeCam : MonoBehaviour
 
     void Change()
     {
-        if (GameManager.Instance.gameState==GameState.Playing)
+        if (GameManager.Instance.gameState==GameState.Playing && GameManager.Instance.playingState==PlayingState.None)
         {
             cam1.GetComponent<CinemachineVirtualCamera>().enabled=false;
             cam2.GetComponent<CinemachineVirtualCamera>().enabled = true;
+            cam3.GetComponent<CinemachineVirtualCamera>().enabled = false;
         }
 
-        if (GameManager.Instance.gameState==GameState.Ready)
+        if (GameManager.Instance.gameState==GameState.Ready && GameManager.Instance.playingState==PlayingState.None)
         {
             cam1.GetComponent<CinemachineVirtualCamera>().enabled = true;
             cam2.GetComponent<CinemachineVirtualCamera>().enabled = false;
+            cam3.GetComponent<CinemachineVirtualCamera>().enabled = false;
+        }
+        if (GameManager.Instance.gameState==GameState.Playing && GameManager.Instance.playingState==PlayingState.Attack)
+        {
+            cam1.GetComponent<CinemachineVirtualCamera>().enabled = false;
+            cam2.GetComponent<CinemachineVirtualCamera>().enabled = false;
+            cam3.GetComponent<CinemachineVirtualCamera>().enabled = true;
         }
     }
 }

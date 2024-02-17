@@ -60,6 +60,7 @@ public class RaycastStart : MonoBehaviour
 
         if(GameManager.Instance.gameState==GameState.Playing)
         {
+            //TODO: Cambiarlo al GameManager
             text.gameObject.SetActive(true);
             block.gameObject.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
@@ -67,10 +68,21 @@ public class RaycastStart : MonoBehaviour
         }
         if(GameManager.Instance.gameState==GameState.Ready)
         {
+            //TODO: Cambiarlo al GameManager
             text.gameObject.SetActive(false);
             block.gameObject.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+        }
+
+        //TODO: MEJORAR
+
+        if(GameManager.Instance.gameState==GameState.Playing && Input.GetKey(KeyCode.Space))
+        {
+            GameManager.Instance.UpdatePlayingState(PlayingState.Attack);
+            text.gameObject.SetActive(false);
+            block.gameObject.SetActive(false);
+
         }
 
         
