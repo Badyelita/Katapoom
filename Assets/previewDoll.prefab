@@ -11,12 +11,10 @@ GameObject:
   - component: {fileID: 5006381407317943108}
   - component: {fileID: 6567103479128537307}
   - component: {fileID: 7544763875793729748}
-  - component: {fileID: -7110608547483943812}
-  - component: {fileID: -8279106895619994170}
-  - component: {fileID: -72412387645844089}
+  - component: {fileID: 962390948695220335}
   m_Layer: 7
-  m_Name: Block
-  m_TagString: Block
+  m_Name: previewDoll
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 47fcb0975c160854d8229eb2bc0c6b41, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -86,28 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &-7110608547483943812
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8402551008408309344}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-8279106895619994170
+--- !u!114 &962390948695220335
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,28 +93,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8402551008408309344}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 798d34e3b4151194490e786a6a9d392f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2582365ea5ea04f458f2b42540db701a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bc: {fileID: -7110608547483943812}
-  whatToDetect:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &-72412387645844089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8402551008408309344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6920ada526bc0564c8e8f2ad6012a52c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mass: 1
-  isSlime: 0
-  isHeavy: 0
-  isRebound: 0
-  isLastChance: 0
-  isRandom: 0

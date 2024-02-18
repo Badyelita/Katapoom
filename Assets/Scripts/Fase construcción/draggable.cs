@@ -13,9 +13,10 @@ public class draggable : MonoBehaviour {
     private void OnMouseOver() {
         if (!instantiateBlock.instance.buildingUp && Input.GetMouseButtonDown(1) && canMove) {
             Destroy(gameObject);
-            GameManager.Instance.countBlocks -= 1;
-
-            GameManager.Instance.UpdateHud();
+            if (gameObject.tag.Equals("Block")) {
+                GameManager.Instance.countBlocks -= 1;
+                GameManager.Instance.UpdateHud();
+            }
         }
     }
 

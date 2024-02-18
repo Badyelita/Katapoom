@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameState gameState = GameState.Ready;
     public int countBlocks = 0;
     public GameObject block;
+    [HideInInspector] public bool isDoll = false;
     public static GameManager Instance { get; private set; }
     
 
@@ -85,9 +86,17 @@ public class GameManager : MonoBehaviour
         block.GetComponent<Block>().isRandom = false;
         block.GetComponent<Block>().isRebound = false;
         block.GetComponent<Block>().isSlime = false;
+
+        isDoll = false;
     }
 
     public void PressedHeavyBlock() {
         block.GetComponent<Block>().isHeavy = true;
+
+        isDoll = false;
+    }
+
+    public void PressedDollButton() { 
+        isDoll = true;
     }
 }
