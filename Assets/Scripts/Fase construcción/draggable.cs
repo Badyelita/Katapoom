@@ -11,7 +11,7 @@ public class draggable : MonoBehaviour {
 
     private bool canMove;
     private void OnMouseOver() {
-        if (!instantiateBlock.instance.buildingUp && Input.GetMouseButtonDown(1) && canMove) {
+        if (!instantiateBlock.instance.buildingUp && Input.GetMouseButtonDown(1) && canMove && GameManager.Instance.playingState==PlayingState.Defense) {
             Destroy(gameObject);
             if (gameObject.tag.Equals("Block")) {
                 GameManager.Instance.countBlocks -= 1;
@@ -21,7 +21,7 @@ public class draggable : MonoBehaviour {
     }
 
     private void OnMouseDrag() {
-        if (!instantiateBlock.instance.buildingUp) {
+        if (!instantiateBlock.instance.buildingUp && GameManager.Instance.playingState==PlayingState.Defense) {
             bc.enabled = false;
             Vector3 mouse = Input.mousePosition;
             Ray casepoint = Camera.main.ScreenPointToRay(mouse);
