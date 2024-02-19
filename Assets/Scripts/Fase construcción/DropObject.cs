@@ -9,7 +9,7 @@ public class DropObject : MonoBehaviour
     public GameObject block;
 
     void Update() {
-    if(GameManager.Instance.gameState==GameState.Playing){
+    if(GameManager.Instance.gameState==GameState.Playing && GameManager.Instance.playingState==PlayingState.Defense){
         if (Input.GetMouseButtonDown(0) && instantiateBlock.instance.buildingUp && instantiateBlock.instance.onTheArena && GameManager.Instance.countBlocks <= 15) {
 
                 //TODO va pero no me gusta la implementacion
