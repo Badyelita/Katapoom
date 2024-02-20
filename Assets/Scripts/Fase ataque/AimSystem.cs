@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AimSystem : MonoBehaviour
 {
+    private float rotationX;
     [SerializeField] float rotation=0.3f;
     // Start is called before the first frame update
     void Start()
@@ -18,19 +19,18 @@ public class AimSystem : MonoBehaviour
         {
             AimingKatapult();
         }
-         //gameObject.transform.Rotate(0f, 5f, 0f, Space.Self);
     }
 
 
     void AimingKatapult()
     {
-        if(Input.GetKey(KeyCode.A))
-        {
-            gameObject.transform.Rotate(0f, rotation, 0f, Space.Self);
-        }
-        if(Input.GetKey(KeyCode.D))
+        if(Input.GetKey(KeyCode.A) && transform.rotation.eulerAngles.y>180f)
         {
             gameObject.transform.Rotate(0f, -rotation, 0f, Space.Self);
+        }
+        if(Input.GetKey(KeyCode.D) && transform.rotation.eulerAngles.y<355f)
+        {
+            gameObject.transform.Rotate(0f, rotation, 0f, Space.Self);
         }
     }
 }
