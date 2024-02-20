@@ -7,10 +7,8 @@ using UnityEngine;
 public class HudManager : MonoBehaviour
 {
     [HideInInspector] public int countBlocks = 0;
-    [HideInInspector] public int countDoll = 0;
-    public GameObject block;
 
-    [HideInInspector] public bool isDoll = false;
+    public GameObject block;
 
     [SerializeField] private TMP_Text textBlocks;
     [SerializeField] private GameObject buttonDoll;
@@ -35,21 +33,6 @@ public class HudManager : MonoBehaviour
         textBlocks.SetText(String.Format("{0}/16 Bloques", countBlocks));
     }
 
-    public void UpdateCountDolls()
-    {
-        if (countDoll == 4)
-        {
-            buttonDoll.SetActive(false);
-
-            //TODO estas 2 lineas ya estan en el DropObject, hay que crear un script aparte (CommonMethods) y ahi declarar la funcion para usarla desde ahi
-            Destroy(instantiateBlock.instance.spawnBlock);
-            instantiateBlock.instance.buildingUp = false;
-        }
-        else {
-            buttonDoll.SetActive(true);
-        }
-    }
-
     public void PressedNormalBlock()
     {
         block.GetComponent<Block>().isHeavy = false;
@@ -58,17 +41,10 @@ public class HudManager : MonoBehaviour
         block.GetComponent<Block>().isRebound = false;
         block.GetComponent<Block>().isSlime = false;
 
-        isDoll = false;
     }
 
     public void PressedHeavyBlock()
     {
         block.GetComponent<Block>().isHeavy = true;
-        isDoll = false;
-    }
-
-    public void PressedDollButton()
-    {
-        isDoll = true;
     }
 }
