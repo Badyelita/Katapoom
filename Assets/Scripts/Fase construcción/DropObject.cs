@@ -10,46 +10,48 @@ public class DropObject : MonoBehaviour
     public GameObject doll;
 
     void Update() {
-    if(GameManager.Instance.gameState==GameState.Playing && GameManager.Instance.playingState==PlayingState.Defense){
-        if (Input.GetMouseButtonDown(0) && instantiateBlock.instance.buildingUp && instantiateBlock.instance.onTheArena && GameManager.Instance.countBlocks <= 15) {
+        if(GameManager.Instance.gameState==GameState.Playing && GameManager.Instance.playingState==PlayingState.Defense){
+            if (Input.GetMouseButtonDown(0) && instantiateBlock.instance.buildingUp && instantiateBlock.instance.onTheArena && HudManager.Instance.countBlocks <= 15) {
                 //TODO va pero no me gusta la implementacion
-            if (block.GetComponent<Block>().isHeavy)
-            {
-                block.GetComponent<Block>().mass = 2f;
-            }
-            else if (block.GetComponent<Block>().isLastChance)
-            {
+                if (block.GetComponent<Block>().isHeavy)
+                {
+                    block.GetComponent<Block>().mass = 2f;
+                }
+                else if (block.GetComponent<Block>().isLastChance)
+                {
 
-            }
-            else if (block.GetComponent<Block>().isRandom)
-            {
+                }
+                else if (block.GetComponent<Block>().isRandom)
+                {
 
-            }
-            else if (block.GetComponent<Block>().isRebound)
-            {
+                }
+                else if (block.GetComponent<Block>().isRebound)
+                {
 
-            }
-            else if (block.GetComponent<Block>().isSlime)
-            {
+                }
+                else if (block.GetComponent<Block>().isSlime)
+                {
 
-            }
-            else 
-            {
-                block.GetComponent<Block>().mass = 1f;
-            }
+                }
+                else 
+                {
+                    block.GetComponent<Block>().mass = 1f;
+                }
 
-            if (GameManager.Instance.isDoll) {
-                Instantiate(doll, instantiateBlock.instance.spawnBlock.transform.position, instantiateBlock.instance.spawnBlock.transform.rotation);
-            } else {
-                Instantiate(block, instantiateBlock.instance.spawnBlock.transform.position, instantiateBlock.instance.spawnBlock.transform.rotation);
-                GameManager.Instance.countBlocks += 1;
-                GameManager.Instance.UpdateHud();
+                if (HudManager.Instance.isDoll) {
+                    Instantiate(doll, instantiateBlock.instance.spawnBlock.transform.position, instantiateBlock.instance.spawnBlock.transform.rotation);
+                    HudManager.Instance.countDoll += 1;
+                    HudManager.Instance.UpdateCountDolls();
+                } else {
+                    Instantiate(block, instantiateBlock.instance.spawnBlock.transform.position, instantiateBlock.instance.spawnBlock.transform.rotation);
+                    HudManager.Instance.countBlocks += 1;
+                    HudManager.Instance.UpdateCountBlocks();
+                }
+            }
+            if ((Input.GetMouseButtonDown(1) && instantiateBlock.instance.buildingUp)) {
+                Destroy(instantiateBlock.instance.spawnBlock);
+                instantiateBlock.instance.buildingUp = false;
             }
         }
-        if (Input.GetMouseButtonDown(1) && instantiateBlock.instance.buildingUp) {
-            Destroy(instantiateBlock.instance.spawnBlock);
-            instantiateBlock.instance.buildingUp = false;
-        }
-    }
     }
 }

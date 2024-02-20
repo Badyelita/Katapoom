@@ -352,8 +352,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2036937320}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 2036937322}
+        m_TargetAssemblyTypeName: HudManager, Assembly-CSharp
         m_MethodName: PressedNormalBlock
         m_Mode: 1
         m_Arguments:
@@ -459,7 +459,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "mu\xF1eco 1"
+  m_text: "mu\xF1ecos"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -631,8 +631,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2036937320}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 2036937322}
+        m_TargetAssemblyTypeName: HudManager, Assembly-CSharp
         m_MethodName: PressedHeavyBlock
         m_Mode: 1
         m_Arguments:
@@ -1339,8 +1339,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2036937320}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 2036937322}
+        m_TargetAssemblyTypeName: HudManager, Assembly-CSharp
         m_MethodName: PressedDollButton
         m_Mode: 1
         m_Arguments:
@@ -1507,6 +1507,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2036937321}
   - component: {fileID: 2036937320}
+  - component: {fileID: 2036937322}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1527,9 +1528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 1
-  countBlocks: 0
-  block: {fileID: 8402551008408309344, guid: 97456772dcac55942ab50a1560b5ab4a, type: 3}
-  isDoll: 0
+  playingState: 1
 --- !u!4 &2036937321
 Transform:
   m_ObjectHideFlags: 0
@@ -1545,6 +1544,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2036937322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036937319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c0ca25636a7104a98e1b6b543f9130, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countBlocks: 0
+  countDoll: 0
+  block: {fileID: 0}
+  isDoll: 0
+  textBlocks: {fileID: 1472629822}
+  buttonDoll: {fileID: 1786966742}
 --- !u!1 &2077484360
 GameObject:
   m_ObjectHideFlags: 0
@@ -1558,7 +1575,6 @@ GameObject:
   - component: {fileID: 2077484362}
   - component: {fileID: 2077484361}
   - component: {fileID: 2077484365}
-  - component: {fileID: 2077484366}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1667,20 +1683,6 @@ MonoBehaviour:
   spawnBlock: {fileID: 0}
   buildingUp: 0
   onTheArena: 0
---- !u!114 &2077484366
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2077484360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed50a5fd7ce85b94ca51fca72f8453e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  block: {fileID: 8442688151887397450, guid: 80e52dfc3a59f1046a1159816df5874d, type: 3}
-  spawnBlock: {fileID: 0}
 --- !u!1001 &5829691747457786074
 PrefabInstance:
   m_ObjectHideFlags: 0
