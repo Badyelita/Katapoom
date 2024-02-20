@@ -16,12 +16,11 @@ public class instantiateBlock : MonoBehaviour
 
     //Esta clase se encarga de spawnear el bloque
 
-    [SerializeField] GameObject block;
-    public GameObject spawnBlock;
-    public bool buildingUp;
-    public bool onTheArena;
+    [HideInInspector] public GameObject spawnBlock;
+    [HideInInspector] public bool buildingUp;
+    [HideInInspector] public bool onTheArena;
 
-    public void InstantiateBlock() {
+    public void InstantiateBlock(GameObject block) {
         if(!buildingUp)
         {
             buildingUp = true;
