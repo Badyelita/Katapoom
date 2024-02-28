@@ -28,6 +28,7 @@ public class DrawPath : MonoBehaviour
     {
         //FIXME Fallo en las layers no cambia el renderer si choca
         if(GameManager.Instance.gameState==GameState.Playing && GameManager.Instance.playingState==PlayingState.Attack){
+        lineRenderer.enabled=true;
         lineRenderer.positionCount = (int)numPoints;
         List<Vector3> points = new List<Vector3>();
         Vector3 startingPosition = aimSystem.ShootPoint.position;
@@ -46,6 +47,10 @@ public class DrawPath : MonoBehaviour
         }
 
         lineRenderer.SetPositions(points.ToArray());
+    }
+    if(GameManager.Instance.gameState==GameState.Playing && GameManager.Instance.playingState!=PlayingState.Attack)
+    {
+        lineRenderer.enabled=false;
     }
     }
 }
