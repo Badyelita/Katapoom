@@ -7,7 +7,7 @@ public class DropObject : MonoBehaviour
     // Esta clase se encarga del crear el bloque al hacer clic izquierdo y destruirlo al hacer clic derecho
     public GameObject previewBlock;
     public GameObject block;
-    public GameObject doll;
+    //public GameObject doll;
 
     void Update() {
         if(GameManager.Instance.gameState==GameState.Playing && GameManager.Instance.playingState==PlayingState.Defense){
