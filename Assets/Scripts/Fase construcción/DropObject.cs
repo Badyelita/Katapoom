@@ -10,7 +10,7 @@ public class DropObject : MonoBehaviour
     //public GameObject doll;
 
     void Update() {
-        if(GameManager.Instance.gameState==GameState.Playing && GameManager.Instance.playingState==PlayingState.Defense){
+        if(GameManager.Instance.playingState == PlayingState.Defense && GameManager.Instance.gameState == GameState.Playing){
             if (Input.GetMouseButtonDown(0) && instantiateBlock.instance.buildingUp && instantiateBlock.instance.onTheArena && HudManager.Instance.countBlocks <= 15) {
                 //TODO va pero no me gusta la implementacion
                 if (block.GetComponent<Block>().isHeavy)
