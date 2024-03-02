@@ -13,6 +13,8 @@ public class HudManager : MonoBehaviour
     [SerializeField] private TMP_Text textBlocks;
     [SerializeField] private GameObject buttonDoll;
 
+    public bool isSpeaking = false;
+
     public static HudManager Instance { get; private set; }
 
     void Awake()

@@ -9,6 +9,7 @@ public class DialogoScript : MonoBehaviour
     public string[] lines;                  //string con las diferentes lineas de dialogo
     public float textSpeed = 0.1f;          //velocidad de aparacion del texto
     int index;                              //indicador de por donde vamos
+    [SerializeField] private GameObject PauseManager;
 
     void Start()
     {
@@ -34,12 +35,13 @@ public class DialogoScript : MonoBehaviour
 
     public void StartDialogue()
     {
+        PauseManager.GetComponent<PauseManager>().enabled = false;
         index = 0;
         StartCoroutine(WriteLine());
     }
 
     //corrutina = es como un metodo que podemos llamar y esperar cierto tiempo en ejecutarse
-    IEnumerator WriteLine()
+    public IEnumerator WriteLine()
     {
         //aqui vamos a controlar que se escriban las lineas del texto
         foreach (var letter in lines[index].ToCharArray())            //cada caracter que tengamos se va a buscar en nuestras lineas de texto
@@ -59,6 +61,9 @@ public class DialogoScript : MonoBehaviour
         }
         else
         {
+            //FIXME a lo mejor al pulsar el escape en el dialogo, puede que aparezca el raton.
+            PauseManager.GetComponent<PauseManager>().enabled = true;
+            HudManager.Instance.isSpeaking = false;
             gameObject.SetActive(false);
         }
     }

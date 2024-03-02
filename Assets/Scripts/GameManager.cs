@@ -43,40 +43,10 @@ public class GameManager : MonoBehaviour
     public void UpdateGameState(GameState newGameState)
     {
         gameState=newGameState;
-
-        switch (gameState)
-        {
-            case GameState.Ready:
-            HandleChangePovFirstPerson();
-            break;
-
-            case GameState.Playing:
-            HandleChangePovZenithal();
-            break;
-
-            case GameState.Ended:
-            break;
-
-            case GameState.Paused:
-            break;
-            
-            default:
-            throw new ArgumentOutOfRangeException(nameof(newGameState), newGameState, null);
-        }
     }
 
     public void UpdatePlayingState(PlayingState newPlayingState)
     {
         playingState=newPlayingState;
-    }
-
-    void HandleChangePovZenithal()
-    {
-        
-    }
-
-    void HandleChangePovFirstPerson()
-    {
-        
     }
 }
