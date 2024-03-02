@@ -39,9 +39,9 @@ public class DropObject : MonoBehaviour
                     blockType.SetNormalBlock();
                 }
 
-                    Instantiate(block, instantiateBlock.instance.spawnBlock.transform.position, instantiateBlock.instance.spawnBlock.transform.rotation);
-                    HudManager.Instance.countBlocks += 1;
-                    HudManager.Instance.UpdateCountBlocks();
+                Instantiate(block, instantiateBlock.instance.spawnBlock.transform.position, instantiateBlock.instance.spawnBlock.transform.rotation);
+                HudManager.Instance.countBlocks += 1;
+                HudManager.Instance.UpdateCountBlocks();
             }
             if ((Input.GetMouseButtonDown(1) && instantiateBlock.instance.buildingUp)) {
                 Destroy(instantiateBlock.instance.spawnBlock);

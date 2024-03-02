@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum GameState { Ready, Playing, Paused, Ended };
-public enum PlayingState { None, Defense, Attack};
+public enum PlayingState { None, Defense, Cards, Attack};
 
 public class GameManager : MonoBehaviour
 {
