@@ -20,6 +20,7 @@ public class RaycastStart : MonoBehaviour
 
     [SerializeField] Button block;
     [SerializeField] TMP_Text text;
+    [SerializeField] Button changeFaseButton;
 
     // Start is called before the first frame update
     void Start()
@@ -58,20 +59,33 @@ public class RaycastStart : MonoBehaviour
             ExitGame();
         }
 
-        if(GameManager.Instance.gameState==GameState.Playing)
+        if(GameManager.Instance.gameState==GameState.Playing && GameManager.Instance.playingState==PlayingState.Defense)
         {
+            //TODO: Cambiarlo al GameManager
             text.gameObject.SetActive(true);
             block.gameObject.SetActive(true);
+            changeFaseButton.gameObject.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
         if(GameManager.Instance.gameState==GameState.Ready)
         {
+            //TODO: Cambiarlo al GameManager
             text.gameObject.SetActive(false);
             block.gameObject.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+
+        //TODO: MEJORAR
+
+     //   if(GameManager.Instance.gameState==GameState.Playing && Input.GetKey(KeyCode.Space))
+    //    {
+    // GameManager.Instance.UpdatePlayingState(PlayingState.Attack);
+    //  text.gameObject.SetActive(false);
+    //    block.gameObject.SetActive(false);
+
+    //  }
 
         
 
@@ -91,6 +105,7 @@ public class RaycastStart : MonoBehaviour
             inGame = true;
             //Se actualiza el estado del juego
             GameManager.Instance.UpdateGameState(GameState.Playing);
+            GameManager.Instance.UpdatePlayingState(PlayingState.Defense);
         }
         
     }
@@ -107,6 +122,7 @@ public class RaycastStart : MonoBehaviour
             player.GetComponent<PlayerMov>().enabled = true;
             exitGame = false;
             GameManager.Instance.UpdateGameState(GameState.Ready);
+            GameManager.Instance.UpdatePlayingState(PlayingState.None);
         }
     }
 }

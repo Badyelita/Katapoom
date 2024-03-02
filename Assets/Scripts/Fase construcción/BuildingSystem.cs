@@ -7,6 +7,7 @@ public class BuildingSystem : MonoBehaviour
 {
     // Esta clase se encarga mover el previsualizado del bloque
     void Update() {
+        
         if (instantiateBlock.instance.buildingUp) {
             Vector3 mouse = Input.mousePosition;
             Ray casepoint = Camera.main.ScreenPointToRay(mouse);
