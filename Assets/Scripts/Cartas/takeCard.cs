@@ -13,7 +13,7 @@ public class takeCard : MonoBehaviour
     GameObject instantiatedCard;
 
     Vector2 max = new (0.242f, 0.2247778f);
-    Vector2 min = new (0.1822709f, 0.07314815f);
+    Vector2 min = new (0.142f, 0.07314815f);
     
     private void Start()
     {
@@ -41,7 +41,7 @@ public class takeCard : MonoBehaviour
             instantiatedCard.transform.localScale = new Vector3(0.75f, 0.7f, 0.75f);
 
             min.x = max.x;
-            max.x += 0.0641f;
+            max.x += 0.1f;
         }
     }
 }

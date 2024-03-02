@@ -18,7 +18,7 @@ public class RaycastStart : MonoBehaviour
     public bool inGame = false;
     public bool exitGame = false;
 
-    [SerializeField] Button block;
+    [SerializeField] GameObject block;
     [SerializeField] TMP_Text text;
     [SerializeField] Button changeFaseButton;
 
@@ -49,7 +49,7 @@ public class RaycastStart : MonoBehaviour
             Move();
         }
 
-        if (inGame && Input.GetKey(KeyCode.Backspace))
+        if (GameManager.Instance.playingState == PlayingState.Defense && Input.GetKey(KeyCode.Backspace))
         {
             exitGame = true; 
            
@@ -63,7 +63,7 @@ public class RaycastStart : MonoBehaviour
         {
             //TODO: Cambiarlo al GameManager
             text.gameObject.SetActive(true);
-            block.gameObject.SetActive(true);
+            block.SetActive(true);
             changeFaseButton.gameObject.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -71,8 +71,9 @@ public class RaycastStart : MonoBehaviour
         if(GameManager.Instance.gameState==GameState.Ready)
         {
             //TODO: Cambiarlo al GameManager
+            changeFaseButton.gameObject.SetActive(false);
             text.gameObject.SetActive(false);
-            block.gameObject.SetActive(false);
+            block.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
