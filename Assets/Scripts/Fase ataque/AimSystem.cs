@@ -50,7 +50,7 @@ public class AimSystem : MonoBehaviour
     void Update()
     {
         
-        if(Input.GetKeyUp(KeyCode.Space))
+        if(Input.GetKeyUp(KeyCode.Space) && GameManager.Instance.playingState == PlayingState.Attack)
         {
             Shooting(force);
         }

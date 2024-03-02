@@ -9,6 +9,8 @@ public class PauseManager : MonoBehaviour
     public GameObject menuPause;
     public GameObject menuExit;
     public GameObject menuOptions;
+    public GameObject dialogPanel;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -39,8 +41,9 @@ public class PauseManager : MonoBehaviour
         Cursor.visible = true;
         GameManager.Instance.UpdateGameState(GameState.Paused);
         Time.timeScale=0f;
-        isPaused=true;
-        
+        dialogPanel.SetActive(false);
+
+        isPaused =true;
     }
 
     public void ResumeGame()
@@ -52,7 +55,9 @@ public class PauseManager : MonoBehaviour
         Cursor.visible = false;
         GameManager.Instance.UpdateGameState(GameState.Ready);
         Time.timeScale=1.0f;
-        isPaused=false;
+        //StartCoroutine(dialogPanel.GetComponent<DialogoScript>().coroutine);
+
+        isPaused =false;
     }
 
 

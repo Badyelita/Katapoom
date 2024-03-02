@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum GameState { Ready, Playing, Paused, Ended };
-public enum PlayingState { None, Defense, Attack};
+public enum PlayingState { None, Defense, Cards, Attack};
 
 public class GameManager : MonoBehaviour
 {
@@ -43,40 +43,10 @@ public class GameManager : MonoBehaviour
     public void UpdateGameState(GameState newGameState)
     {
         gameState=newGameState;
-
-        switch (gameState)
-        {
-            case GameState.Ready:
-            HandleChangePovFirstPerson();
-            break;
-
-            case GameState.Playing:
-            HandleChangePovZenithal();
-            break;
-
-            case GameState.Ended:
-            break;
-
-            case GameState.Paused:
-            break;
-            
-            default:
-            throw new ArgumentOutOfRangeException(nameof(newGameState), newGameState, null);
-        }
     }
 
     public void UpdatePlayingState(PlayingState newPlayingState)
     {
         playingState=newPlayingState;
-    }
-
-    void HandleChangePovZenithal()
-    {
-        
-    }
-
-    void HandleChangePovFirstPerson()
-    {
-        
     }
 }

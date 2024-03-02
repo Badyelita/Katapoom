@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class RaycastStart : MonoBehaviour
 {
 
-    [SerializeField] private LayerMask whatToDetect;
+    [SerializeField] private LayerMask[] whatToDetect;
     float maxDistance = 3f;
     RaycastHit hit;
     public GameObject player;
@@ -17,10 +17,12 @@ public class RaycastStart : MonoBehaviour
     bool canMove = false;
     public bool inGame = false;
     public bool exitGame = false;
+    
 
-    [SerializeField] Button block;
+    [SerializeField] GameObject block;
     [SerializeField] TMP_Text text;
     [SerializeField] Button changeFaseButton;
+    [SerializeField] GameObject dialogPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -36,20 +38,36 @@ public class RaycastStart : MonoBehaviour
         //Creamos el Rayo
         Ray ray = new Ray(transform.position, transform.forward);
         //Lanzamos el raycast para reconocer la mesa si el personaje la mira
-        if (Physics.Raycast(ray, out hit, maxDistance, whatToDetect))
+        if (Physics.Raycast(ray, out hit, maxDistance, whatToDetect[0]) || Physics.Raycast(ray, out hit, maxDistance, whatToDetect[1]))
         {
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.E) && hit.collider.gameObject.layer == 6)
             {
                 canMove = true;
-                
             }
+            else if (Input.GetKey(KeyCode.E) && hit.collider.gameObject.layer == 8) {
+                HudManager.Instance.isSpeaking = true;
+            }
+
+
 
         } if (canMove)
         {
             Move();
         }
 
-        if (inGame && Input.GetKey(KeyCode.Backspace))
+        if (HudManager.Instance.isSpeaking)
+        {
+            dialogPanel.SetActive(true);
+            dialogPanel.GetComponent<DialogoScript>().enabled = true;
+            player.GetComponent<PlayerMov>().enabled = false;
+        }
+        else {
+            dialogPanel.SetActive(false);
+            dialogPanel.GetComponent<DialogoScript>().enabled = false;
+            player.GetComponent<PlayerMov>().enabled = true;
+        }
+
+        if (GameManager.Instance.playingState == PlayingState.Defense && Input.GetKey(KeyCode.Backspace))
         {
             exitGame = true; 
            
@@ -63,7 +81,7 @@ public class RaycastStart : MonoBehaviour
         {
             //TODO: Cambiarlo al GameManager
             text.gameObject.SetActive(true);
-            block.gameObject.SetActive(true);
+            block.SetActive(true);
             changeFaseButton.gameObject.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -71,8 +89,9 @@ public class RaycastStart : MonoBehaviour
         if(GameManager.Instance.gameState==GameState.Ready)
         {
             //TODO: Cambiarlo al GameManager
+            changeFaseButton.gameObject.SetActive(false);
             text.gameObject.SetActive(false);
-            block.gameObject.SetActive(false);
+            block.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
