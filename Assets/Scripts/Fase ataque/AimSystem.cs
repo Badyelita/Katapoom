@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class AimSystem : MonoBehaviour
 {
-    [SerializeField] float rotation=0.3f;
+    [SerializeField] float rotationSpeed=0.3f;
+    public float BlastPower = 5;
+
+    public float force;
+    bool min;
+
+    public GameObject Projectile;
+    public Transform ShootPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,25 +19,61 @@ public class AimSystem : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+
+    void FixedUpdate()
     {
         if(GameManager.Instance.playingState==PlayingState.Attack)
         {
             AimingKatapult();
         }
-         //gameObject.transform.Rotate(0f, 5f, 0f, Space.Self);
+        if(Input.GetKey(KeyCode.Space)){
+            if(min)
+            {
+                force+=0.05f;
+                if(force>=7f)
+                {
+                    min=false;
+                }
+            }
+            if(!min)
+            {
+                force-=0.05f;
+                if(force<=3f)
+                {
+                    min=true;
+                }
+            }
+            
+        }
+
+    }
+    void Update()
+    {
+        
+        if(Input.GetKeyUp(KeyCode.Space))
+        {
+            Shooting(force);
+        }
     }
 
 
     void AimingKatapult()
     {
-        if(Input.GetKey(KeyCode.A))
+        if(Input.GetKey(KeyCode.A) && transform.rotation.eulerAngles.y>180f)
         {
-            gameObject.transform.Rotate(0f, rotation, 0f, Space.Self);
+            transform.Rotate(0f, -rotationSpeed, 0f, Space.Self);
         }
-        if(Input.GetKey(KeyCode.D))
+        if(Input.GetKey(KeyCode.D) && transform.rotation.eulerAngles.y<355f)
         {
-            gameObject.transform.Rotate(0f, -rotation, 0f, Space.Self);
+            transform.Rotate(0f, rotationSpeed, 0f, Space.Self);
         }
+    }
+
+    //Transformar lo del if en un metodo
+    void Shooting(float forceShoot)
+    {
+        GameObject CreatedProjectile = Instantiate(Projectile, ShootPoint.position, ShootPoint.rotation);
+        CreatedProjectile.GetComponent<Rigidbody>().velocity = ShootPoint.transform.up * forceShoot;
+        force=3f;
     }
 }

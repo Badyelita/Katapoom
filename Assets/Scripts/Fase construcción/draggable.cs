@@ -8,30 +8,39 @@ public class draggable : MonoBehaviour {
     RaycastHit hit;
     Ray casepoint;
     [SerializeField] private LayerMask whatToDetect;
+    private bool isDoll;
 
     private bool canMove;
     private void OnMouseOver() {
-        if (!instantiateBlock.instance.buildingUp && Input.GetMouseButtonDown(1) && canMove && GameManager.Instance.playingState==PlayingState.Defense) {
+        if (GameManager.Instance.playingState == PlayingState.Defense && !instantiateBlock.instance.buildingUp && Input.GetMouseButtonDown(1) && canMove) {
             Destroy(gameObject);
-            GameManager.Instance.countBlocks -= 1;
-
-            GameManager.Instance.UpdateHud();
+            HudManager.Instance.countBlocks -= 1;
+            HudManager.Instance.UpdateCountBlocks();
         }
     }
 
     private void OnMouseDrag() {
-        if (!instantiateBlock.instance.buildingUp && GameManager.Instance.playingState==PlayingState.Defense) {
+        if (!instantiateBlock.instance.buildingUp && GameManager.Instance.playingState == PlayingState.Defense) {
+            if (gameObject.tag.Equals("Doll"))
+                isDoll = true;
+
             bc.enabled = false;
             Vector3 mouse = Input.mousePosition;
             Ray casepoint = Camera.main.ScreenPointToRay(mouse);
             RaycastHit hit;
 
             if (Physics.Raycast(casepoint, out hit, Mathf.Infinity) && (hit.collider.gameObject.CompareTag("Arena") || hit.collider.gameObject.CompareTag("Block")) && canMove) {
-                transform.position = new Vector3(hit.point.x, hit.point.y + transform.localScale.y / 2, hit.point.z);
-            }
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                transform.Rotate(new Vector3(0, 90));
+                if (isDoll)
+                {
+                    transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+                }
+                else {
+                    transform.position = new Vector3(hit.point.x, hit.point.y + transform.localScale.y / 2, hit.point.z);
+                    if (Input.GetKeyDown(KeyCode.R))
+                    {
+                        transform.Rotate(new Vector3(0, 90));
+                    }
+                }
             }
         }
     }

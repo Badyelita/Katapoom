@@ -7,45 +7,46 @@ public class DropObject : MonoBehaviour
     // Esta clase se encarga del crear el bloque al hacer clic izquierdo y destruirlo al hacer clic derecho
     public GameObject previewBlock;
     public GameObject block;
+    //public GameObject doll;
 
     void Update() {
-    if(GameManager.Instance.gameState==GameState.Playing && GameManager.Instance.playingState==PlayingState.Defense){
-        if (Input.GetMouseButtonDown(0) && instantiateBlock.instance.buildingUp && instantiateBlock.instance.onTheArena && GameManager.Instance.countBlocks <= 15) {
-
+        if(GameManager.Instance.playingState == PlayingState.Defense && GameManager.Instance.gameState == GameState.Playing){
+            if (Input.GetMouseButtonDown(0) && instantiateBlock.instance.buildingUp && instantiateBlock.instance.onTheArena && HudManager.Instance.countBlocks <= 15) {
+                Block blockType = block.GetComponent<Block>();
                 //TODO va pero no me gusta la implementacion
-                if (block.GetComponent<Block>().isHeavy)
+                if (blockType.isHeavy)
                 {
-                    block.GetComponent<Block>().mass = 2f;
+                    blockType.SetHeavyBlock();
                 }
-                else if (block.GetComponent<Block>().isLastChance)
-                {
-
-                }
-                else if (block.GetComponent<Block>().isRandom)
+                else if (blockType.isLastChance)
                 {
 
                 }
-                else if (block.GetComponent<Block>().isRebound)
+                else if (blockType.isRandom)
                 {
 
                 }
-                else if (block.GetComponent<Block>().isSlime)
+                else if (blockType.isRebound)
+                {
+
+                }
+                else if (blockType.isSlime)
                 {
 
                 }
                 else 
                 {
-                    block.GetComponent<Block>().mass = 1f;
+                    blockType.SetNormalBlock();
                 }
-            Instantiate(block, instantiateBlock.instance.spawnBlock.transform.position, instantiateBlock.instance.spawnBlock.transform.rotation);
-            GameManager.Instance.countBlocks += 1;
-            
-            GameManager.Instance.UpdateHud();
+
+                    Instantiate(block, instantiateBlock.instance.spawnBlock.transform.position, instantiateBlock.instance.spawnBlock.transform.rotation);
+                    HudManager.Instance.countBlocks += 1;
+                    HudManager.Instance.UpdateCountBlocks();
+            }
+            if ((Input.GetMouseButtonDown(1) && instantiateBlock.instance.buildingUp)) {
+                Destroy(instantiateBlock.instance.spawnBlock);
+                instantiateBlock.instance.buildingUp = false;
+            }
         }
-        if (Input.GetMouseButtonDown(1) && instantiateBlock.instance.buildingUp) {
-            Destroy(instantiateBlock.instance.spawnBlock);
-            instantiateBlock.instance.buildingUp = false;
-        }
-    }
     }
 }

@@ -5,19 +5,19 @@ using UnityEngine;
 public class Block : MonoBehaviour
 {
 
-    public float mass;
+    [SerializeField] public Rigidbody rb;
 
     [SerializeField] public bool isSlime, isHeavy, isRebound, isLastChance, isRandom;
 
     public void SetNormalBlock()
     {
-        mass = 1f;
+        rb.mass = 1f;
     }
     public void SetSlimeBlock() {
     }
 
     public void SetHeavyBlock() {
-        mass = 2f;
+        rb.mass = 2f;
     }
 
     public void SetReboundBlock()
