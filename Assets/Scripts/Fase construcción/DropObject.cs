@@ -12,30 +12,31 @@ public class DropObject : MonoBehaviour
     void Update() {
         if(GameManager.Instance.playingState == PlayingState.Defense && GameManager.Instance.gameState == GameState.Playing){
             if (Input.GetMouseButtonDown(0) && instantiateBlock.instance.buildingUp && instantiateBlock.instance.onTheArena && HudManager.Instance.countBlocks <= 15) {
+                Block blockType = block.GetComponent<Block>();
                 //TODO va pero no me gusta la implementacion
-                if (block.GetComponent<Block>().isHeavy)
+                if (blockType.isHeavy)
                 {
-                    block.GetComponent<Block>().mass = 2f;
+                    blockType.SetHeavyBlock();
                 }
-                else if (block.GetComponent<Block>().isLastChance)
-                {
-
-                }
-                else if (block.GetComponent<Block>().isRandom)
+                else if (blockType.isLastChance)
                 {
 
                 }
-                else if (block.GetComponent<Block>().isRebound)
+                else if (blockType.isRandom)
                 {
 
                 }
-                else if (block.GetComponent<Block>().isSlime)
+                else if (blockType.isRebound)
+                {
+
+                }
+                else if (blockType.isSlime)
                 {
 
                 }
                 else 
                 {
-                    block.GetComponent<Block>().mass = 1f;
+                    blockType.SetNormalBlock();
                 }
 
                     Instantiate(block, instantiateBlock.instance.spawnBlock.transform.position, instantiateBlock.instance.spawnBlock.transform.rotation);
