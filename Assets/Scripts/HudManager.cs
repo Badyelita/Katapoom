@@ -11,7 +11,6 @@ public class HudManager : MonoBehaviour
     public GameObject block;
 
     [SerializeField] private TMP_Text textBlocks;
-    [SerializeField] private GameObject buttonDoll;
 
     public bool isSpeaking = false;
 
@@ -21,7 +20,7 @@ public class HudManager : MonoBehaviour
     {
         if (Instance != null)
         {
-            Debug.Log("Encontrado más de un HudManager, destruyendo el más nuevo");
+            Debug.Log("Encontrado mï¿½s de un HudManager, destruyendo el mï¿½s nuevo");
             Destroy(this.gameObject);
             return;
         }

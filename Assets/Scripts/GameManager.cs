@@ -16,6 +16,12 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public GameObject spawnBlock;
     [HideInInspector] public bool buildingUp;
     [HideInInspector] public bool onTheArena;
+    [SerializeField] GameObject HudBloques;
+    [SerializeField] GameObject HudCartas;
+    [SerializeField] TMP_Text textContador;
+    [SerializeField] Button changeFaseButtonToAttack;
+    [SerializeField] Button changeFaseButtonToDefense;
+    [SerializeField] Button changeFaseButtonToCards;
 
     public static GameManager Instance { get; private set; }
     
@@ -42,6 +48,25 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
+        if(gameState==GameState.Playing && playingState==PlayingState.Defense)
+        {
+            //TODO: Cambiarlo al GameManager
+            textContador.gameObject.SetActive(true);
+            HudBloques.SetActive(true);
+            changeFaseButtonToCards.gameObject.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
+        if(GameManager.Instance.gameState==GameState.Ready)
+        {
+            //TODO: Cambiarlo al GameManager
+            changeFaseButtonToCards.gameObject.SetActive(false);
+            textContador.gameObject.SetActive(false);
+            HudBloques.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     public void UpdateGameState(GameState newGameState)
@@ -52,5 +77,41 @@ public class GameManager : MonoBehaviour
     public void UpdatePlayingState(PlayingState newPlayingState)
     {
         playingState=newPlayingState;
+    }
+
+        public void ChangeFaseAttack()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        GameManager.Instance.UpdatePlayingState(PlayingState.Attack);
+        textContador.gameObject.SetActive(false);
+        HudCartas.SetActive(false);
+        
+        changeFaseButtonToDefense.gameObject.SetActive(true);
+        changeFaseButtonToAttack.gameObject.SetActive(false);
+    }
+
+    public void ChangeFaseCards() {
+        GameManager.Instance.UpdatePlayingState(PlayingState.Cards);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        HudCartas.SetActive(true);
+        HudBloques.SetActive(false);
+
+        changeFaseButtonToAttack.gameObject.SetActive(true);
+        changeFaseButtonToCards.gameObject.SetActive(false);
+
+    }
+
+    public void ChangeFaseDefense()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        GameManager.Instance.UpdatePlayingState(PlayingState.Defense);
+        textContador.gameObject.SetActive(true);
+        HudBloques.SetActive(true);
+
+        changeFaseButtonToCards.gameObject.SetActive(true);
+        changeFaseButtonToDefense.gameObject.SetActive(false);
     }
 }

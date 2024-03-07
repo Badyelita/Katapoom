@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -485,7 +485,6 @@ GameObject:
   - component: {fileID: 30916365}
   - component: {fileID: 30916364}
   - component: {fileID: 30916366}
-  - component: {fileID: 30916367}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -507,6 +506,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: 0
   playingState: 0
+  spawnBlock: {fileID: 0}
+  buildingUp: 0
+  onTheArena: 0
+  HudBloques: {fileID: 1946816886}
+  HudCartas: {fileID: 550038833}
+  textContador: {fileID: 713551400}
+  changeFaseButtonToAttack: {fileID: 707479487}
+  changeFaseButtonToDefense: {fileID: 1019399881}
+  changeFaseButtonToCards: {fileID: 1481830429}
 --- !u!4 &30916365
 Transform:
   m_ObjectHideFlags: 0
@@ -537,26 +545,7 @@ MonoBehaviour:
   countBlocks: 0
   block: {fileID: 8402551008408309344, guid: 97456772dcac55942ab50a1560b5ab4a, type: 3}
   textBlocks: {fileID: 713551400}
-  buttonDoll: {fileID: 0}
   isSpeaking: 0
---- !u!114 &30916367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 30916363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e583d7b7e42586645bc997e731b50cf1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HudBloques: {fileID: 1946816886}
-  HudCartas: {fileID: 550038833}
-  text: {fileID: 713551400}
-  changeFaseButtonToAttack: {fileID: 707479487}
-  changeFaseButtonToDefense: {fileID: 1019399881}
-  changeFaseButtonToCards: {fileID: 1481830429}
 --- !u!1 &53297750
 GameObject:
   m_ObjectHideFlags: 0
@@ -8064,8 +8053,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 30916367}
-        m_TargetAssemblyTypeName: ChangeFase, Assembly-CSharp
+      - m_Target: {fileID: 30916364}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ChangeFaseAttack
         m_Mode: 1
         m_Arguments:
@@ -11433,8 +11422,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 30916367}
-        m_TargetAssemblyTypeName: ChangeFase, Assembly-CSharp
+      - m_Target: {fileID: 30916364}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ChangeFaseDefense
         m_Mode: 1
         m_Arguments:
@@ -12437,8 +12426,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1088705793}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.66, y: 1.728, z: 5.8}
+  m_LocalRotation: {x: 0.40557975, y: -0.579228, z: 0.40557975, w: 0.579228}
+  m_LocalPosition: {x: 8.98, y: 2.47, z: -1.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17836,8 +17825,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 30916367}
-        m_TargetAssemblyTypeName: ChangeFase, Assembly-CSharp
+      - m_Target: {fileID: 30916364}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ChangeFaseCards
         m_Mode: 1
         m_Arguments:
@@ -22564,9 +22553,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44308b68bfcb0e44e94d285ad2d79bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnBlock: {fileID: 0}
-  buildingUp: 0
-  onTheArena: 0
 --- !u!1001 &1957273971
 PrefabInstance:
   m_ObjectHideFlags: 0
