@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     public GameState gameState = GameState.Ready;
     public PlayingState playingState = PlayingState.None;
 
+    [HideInInspector] public GameObject spawnBlock;
+    [HideInInspector] public bool buildingUp;
+    [HideInInspector] public bool onTheArena;
+
     public static GameManager Instance { get; private set; }
     
 

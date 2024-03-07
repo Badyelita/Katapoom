@@ -1,43 +1,51 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class draggable : MonoBehaviour {
+public class Draggable : MonoBehaviour
+{
     [SerializeField] private BoxCollider bc;
+    [SerializeField] private Rigidbody rb;
     RaycastHit hit;
     Ray casepoint;
     [SerializeField] private LayerMask whatToDetect;
     private bool isDoll;
 
     private bool canMove;
-    private void OnMouseOver() {
-        if (GameManager.Instance.playingState == PlayingState.Defense && !instantiateBlock.instance.buildingUp && Input.GetMouseButtonDown(1) && canMove) {
+    private void OnMouseOver()
+    {
+        if (GameManager.Instance.playingState == PlayingState.Defense && !GameManager.Instance.buildingUp && Input.GetMouseButtonDown(1) && canMove)
+        {
             Destroy(gameObject);
             HudManager.Instance.countBlocks -= 1;
             HudManager.Instance.UpdateCountBlocks();
         }
     }
 
-    private void OnMouseDrag() {
-        if (!instantiateBlock.instance.buildingUp && GameManager.Instance.playingState == PlayingState.Defense) {
-            if (gameObject.tag.Equals("Doll"))
-                isDoll = true;
-
-            bc.enabled = false;
+    private void OnMouseDrag()
+    {
+        if (!GameManager.Instance.buildingUp && GameManager.Instance.playingState == PlayingState.Defense)
+        {
             Vector3 mouse = Input.mousePosition;
             Ray casepoint = Camera.main.ScreenPointToRay(mouse);
             RaycastHit hit;
 
-            if (Physics.Raycast(casepoint, out hit, Mathf.Infinity) && (hit.collider.gameObject.CompareTag("Arena") || hit.collider.gameObject.CompareTag("Block")) && canMove) {
+            if (Physics.Raycast(casepoint, out hit, Mathf.Infinity) && (hit.collider.gameObject.CompareTag("Arena") || hit.collider.gameObject.CompareTag("Block")) && canMove)
+            {
+
+                if (gameObject.tag.Equals("Doll"))
+                    isDoll = true;
+
+                bc.enabled = false;
+                rb.isKinematic = true;
+
                 if (isDoll)
                 {
-                    transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+                    rb.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
                 }
                 else {
-                    transform.position = new Vector3(hit.point.x, hit.point.y + transform.localScale.y / 2, hit.point.z);
-                    if (Input.GetKeyDown(KeyCode.R))
-                    {
+                    rb.position = new Vector3(hit.point.x, hit.point.y + transform.localScale.y / 2, hit.point.z);
+                    if (Input.GetKeyDown(KeyCode.R)) {
                         transform.Rotate(new Vector3(0, 90));
                     }
                 }
@@ -45,13 +53,16 @@ public class draggable : MonoBehaviour {
         }
     }
 
-    private void OnMouseUp() {
+    private void OnMouseUp()
+    {
         bc.enabled = true;
+        rb.isKinematic = false;
     }
 
-    private void Update() {
+    private void Update()
+    {
         casepoint = new Ray(transform.position, transform.up);
-        if (Physics.Raycast(casepoint, out hit, 0.1f, whatToDetect)) {
+        if (Physics.Raycast(casepoint, out hit, gameObject.transform.localScale.y, whatToDetect)) {
             canMove = false;
         }
         else {

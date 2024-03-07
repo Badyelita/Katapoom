@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bc: {fileID: 18587797}
+  rb: {fileID: 18587801}
   whatToDetect:
     serializedVersion: 2
     m_Bits: 0
@@ -165,6 +166,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.06300445, y: 0.02, z: 0.06443606}
   m_Center: {x: 0, y: -0.0000000055879354, z: 0.03222263}
+--- !u!54 &18587801
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18587792}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &21281454
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,7 +277,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46
+  m_fontSize: 92.2
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -347,7 +375,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 31396797}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 579a98a10a7a178429b66f8c8831cfa4, type: 3}
+  m_Script: {fileID: 11500000, guid: 44308b68bfcb0e44e94d285ad2d79bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnBlock: {fileID: 0}
@@ -383,7 +411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ac95fc9364aa64d479f850dd723f80d6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.944
+      value: -58.864002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ac95fc9364aa64d479f850dd723f80d6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -439,6 +467,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac95fc9364aa64d479f850dd723f80d6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 37159569}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ac95fc9364aa64d479f850dd723f80d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 37159574}
   m_SourcePrefab: {fileID: 100100000, guid: ac95fc9364aa64d479f850dd723f80d6, type: 3}
 --- !u!1 &37159568 stripped
 GameObject:
@@ -458,6 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bc: {fileID: 37159570}
+  rb: {fileID: 37159574}
   whatToDetect:
     serializedVersion: 2
     m_Bits: 0
@@ -482,6 +514,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.059907302, y: 0.02, z: 0.062470555}
   m_Center: {x: 0, y: -0.000000007450581, z: 0.03111903}
+--- !u!54 &37159574
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37159568}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &173995925
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,7 +625,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 31396799}
-        m_TargetAssemblyTypeName: instantiateBlock, Assembly-CSharp
+        m_TargetAssemblyTypeName: SpawnPreview, Assembly-CSharp
         m_MethodName: InstantiateBlock
         m_Mode: 2
         m_Arguments:
@@ -577,9 +636,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2036937322}
-        m_TargetAssemblyTypeName: HudManager, Assembly-CSharp
-        m_MethodName: PressedNormalBlock
+      - m_Target: {fileID: -72412387645844089, guid: 97456772dcac55942ab50a1560b5ab4a, type: 3}
+        m_TargetAssemblyTypeName: Block, Assembly-CSharp
+        m_MethodName: SetNormalBlock
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -657,7 +716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d092e4e626bf8294489ac9510cd65a5e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.944
+      value: -58.864002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d092e4e626bf8294489ac9510cd65a5e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -713,6 +772,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d092e4e626bf8294489ac9510cd65a5e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1342273679}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d092e4e626bf8294489ac9510cd65a5e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1342273684}
   m_SourcePrefab: {fileID: 100100000, guid: d092e4e626bf8294489ac9510cd65a5e, type: 3}
 --- !u!1001 &291630261
 PrefabInstance:
@@ -744,7 +806,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0ad9c6d0c390b1e449242431a0dc046b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.944
+      value: -58.864002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0ad9c6d0c390b1e449242431a0dc046b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -800,6 +862,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0ad9c6d0c390b1e449242431a0dc046b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 828267721}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0ad9c6d0c390b1e449242431a0dc046b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 828267725}
   m_SourcePrefab: {fileID: 100100000, guid: 0ad9c6d0c390b1e449242431a0dc046b, type: 3}
 --- !u!1 &354768311
 GameObject:
@@ -885,7 +950,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 31396799}
-        m_TargetAssemblyTypeName: instantiateBlock, Assembly-CSharp
+        m_TargetAssemblyTypeName: SpawnPreview, Assembly-CSharp
         m_MethodName: InstantiateBlock
         m_Mode: 2
         m_Arguments:
@@ -896,9 +961,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2036937322}
-        m_TargetAssemblyTypeName: HudManager, Assembly-CSharp
-        m_MethodName: PressedHeavyBlock
+      - m_Target: {fileID: -72412387645844089, guid: 97456772dcac55942ab50a1560b5ab4a, type: 3}
+        m_TargetAssemblyTypeName: Block, Assembly-CSharp
+        m_MethodName: SetHeavyBlock
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1023,7 +1088,7 @@ Transform:
   m_GameObject: {fileID: 442962104}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.921, z: 0}
+  m_LocalPosition: {x: 0, y: -0.921, z: -57.920002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1059,7 +1124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: db1d276b27b07cc46a02a653882043f1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.944
+      value: -58.864002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: db1d276b27b07cc46a02a653882043f1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1115,6 +1180,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: db1d276b27b07cc46a02a653882043f1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 18587796}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: db1d276b27b07cc46a02a653882043f1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 18587801}
   m_SourcePrefab: {fileID: 100100000, guid: db1d276b27b07cc46a02a653882043f1, type: 3}
 --- !u!1 &618086268
 GameObject:
@@ -1178,7 +1246,7 @@ Transform:
   m_GameObject: {fileID: 618086268}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -57.920002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1223,9 +1291,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bc: {fileID: 828267720}
+  rb: {fileID: 828267725}
   whatToDetect:
     serializedVersion: 2
     m_Bits: 0
+--- !u!54 &828267725
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828267719}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1166378950
 GameObject:
   m_ObjectHideFlags: 0
@@ -1314,7 +1410,7 @@ Transform:
   m_GameObject: {fileID: 1166378950}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: -57.920002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1404,7 +1500,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48.4
+  m_fontSize: 97.25
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1472,6 +1568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bc: {fileID: 1342273680}
+  rb: {fileID: 1342273684}
   whatToDetect:
     serializedVersion: 2
     m_Bits: 0
@@ -1496,6 +1593,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.05994453, y: 0.026474006, z: 0.05636341}
   m_Center: {x: 0, y: -0.00009773532, z: 0.027980521}
+--- !u!54 &1342273684
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342273675}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1472629820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,7 +1704,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54.7
+  m_fontSize: 110.8
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1660,7 +1784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ae3ee854aabb17041813b282f7eb6161, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.944
+      value: -58.864002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ae3ee854aabb17041813b282f7eb6161, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1716,6 +1840,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ae3ee854aabb17041813b282f7eb6161, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1544729291}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ae3ee854aabb17041813b282f7eb6161, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1544729296}
   m_SourcePrefab: {fileID: 100100000, guid: ae3ee854aabb17041813b282f7eb6161, type: 3}
 --- !u!1 &1544729290 stripped
 GameObject:
@@ -1735,6 +1862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bc: {fileID: 1544729292}
+  rb: {fileID: 1544729296}
   whatToDetect:
     serializedVersion: 2
     m_Bits: 0
@@ -1759,6 +1887,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.06300445, y: 0.02, z: 0.06443606}
   m_Center: {x: 0, y: -0.0000000055879354, z: 0.03222263}
+--- !u!54 &1544729296
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544729290}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1711735409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1907,7 +2062,7 @@ Transform:
   m_GameObject: {fileID: 1856979175}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40557975, y: -0.579228, z: 0.40557975, w: 0.579228}
-  m_LocalPosition: {x: 2.67, y: 3.31, z: 0.72}
+  m_LocalPosition: {x: 2.67, y: 3.31, z: -57.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1922,7 +2077,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1856979175}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cc043ae6d54fe742add2230b43f4eb9, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c1484393043c8b4caaa6fd07d67e57e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   previewBlock: {fileID: 8442688151887397450, guid: 80e52dfc3a59f1046a1159816df5874d, type: 3}
@@ -1968,7 +2123,7 @@ Transform:
   m_GameObject: {fileID: 2036937319}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 653.86597, y: 1995.6384, z: 148.64716}
+  m_LocalPosition: {x: 653.86597, y: 1995.6384, z: 90.72716}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1990,6 +2145,7 @@ MonoBehaviour:
   block: {fileID: 8402551008408309344, guid: 97456772dcac55942ab50a1560b5ab4a, type: 3}
   textBlocks: {fileID: 1472629822}
   buttonDoll: {fileID: 0}
+  isSpeaking: 0
 --- !u!1 &2077484360
 GameObject:
   m_ObjectHideFlags: 0
@@ -2111,7 +2267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3d7a3746dfd645b439658d0bef539d76, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -57.920002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3d7a3746dfd645b439658d0bef539d76, type: 3}
       propertyPath: m_LocalRotation.w

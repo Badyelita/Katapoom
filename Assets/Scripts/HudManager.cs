@@ -34,19 +34,4 @@ public class HudManager : MonoBehaviour
     {
         textBlocks.SetText(String.Format("{0}/16 Bloques", countBlocks));
     }
-
-    public void PressedNormalBlock()
-    {
-        block.GetComponent<Block>().isHeavy = false;
-        block.GetComponent<Block>().isLastChance = false;
-        block.GetComponent<Block>().isRandom = false;
-        block.GetComponent<Block>().isRebound = false;
-        block.GetComponent<Block>().isSlime = false;
-
-    }
-
-    public void PressedHeavyBlock()
-    {
-        block.GetComponent<Block>().isHeavy = true;
-    }
 }
