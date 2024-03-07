@@ -277,11 +277,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 92.2
+  m_fontSize: 22.05
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 24
+  m_fontSizeMin: 1
   m_fontSizeMax: 100
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -378,9 +378,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44308b68bfcb0e44e94d285ad2d79bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnBlock: {fileID: 0}
-  buildingUp: 0
-  onTheArena: 0
+  previewBlock: {fileID: 8442688151887397450, guid: 80e52dfc3a59f1046a1159816df5874d, type: 3}
+  scriptBlock: {fileID: -72412387645844089, guid: 97456772dcac55942ab50a1560b5ab4a, type: 3}
 --- !u!1001 &37159567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1500,11 +1499,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 97.25
+  m_fontSize: 23.1
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 24
+  m_fontSizeMin: 1
   m_fontSizeMax: 100
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -1704,7 +1703,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 110.8
+  m_fontSize: 25.65
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2114,6 +2113,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: 1
   playingState: 1
+  spawnBlock: {fileID: 0}
+  buildingUp: 0
+  onTheArena: 0
 --- !u!4 &2036937321
 Transform:
   m_ObjectHideFlags: 0
