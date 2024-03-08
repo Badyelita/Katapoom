@@ -18080,8 +18080,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 1182475439}
   lines:
-  - policia maritima
-  - a ver esa concha!
+  - Texto de ejemlo 1
+  - Texto de ejemlo 2
   textSpeed: 0.1
   PauseManager: {fileID: 1124931259}
 --- !u!114 &1516911399
