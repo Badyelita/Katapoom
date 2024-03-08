@@ -1,0 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class BotonJugarSalir : MonoBehaviour
+{
+    public void Jugar(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void Salir()
+    {
+        Application.Quit();
+    }
+}
