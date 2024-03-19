@@ -9,12 +9,12 @@ public class Draggable : MonoBehaviour
     RaycastHit hit;
     Ray casepoint;
     [SerializeField] private LayerMask whatToDetect;
-    private bool isDoll;
+    [SerializeField] private bool isDoll;
 
     private bool canMove;
     private void OnMouseOver()
     {
-        if (GameManager.Instance.playingState == PlayingState.Defense && !GameManager.Instance.buildingUp && Input.GetMouseButtonDown(1) && canMove)
+        if (GameManager.Instance.playingState == PlayingState.Defense && !GameManager.Instance.buildingUp && Input.GetMouseButtonDown(1) && canMove && !isDoll)
         {
             Destroy(gameObject);
             HudManager.Instance.countBlocks -= 1;
@@ -33,9 +33,6 @@ public class Draggable : MonoBehaviour
             if (Physics.Raycast(casepoint, out hit, Mathf.Infinity) && (hit.collider.gameObject.CompareTag("Arena") || hit.collider.gameObject.CompareTag("Block")) && canMove)
             {
 
-                if (gameObject.tag.Equals("Doll"))
-                    isDoll = true;
-
                 bc.enabled = false;
                 rb.isKinematic = true;
 
@@ -46,7 +43,7 @@ public class Draggable : MonoBehaviour
                 else {
                     rb.position = new Vector3(hit.point.x, hit.point.y + transform.localScale.y / 2, hit.point.z);
                     if (Input.GetKeyDown(KeyCode.R)) {
-                        transform.Rotate(new Vector3(0, 90));
+                        rb.transform.Rotate(new Vector3(0, 90));
                     }
                 }
             }

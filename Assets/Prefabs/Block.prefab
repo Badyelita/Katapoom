@@ -152,6 +152,7 @@ MonoBehaviour:
   whatToDetect:
     serializedVersion: 2
     m_Bits: 128
+  isDoll: 0
 --- !u!114 &-72412387645844089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,3 +166,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: -5511280168191358873}
+  points: 1
