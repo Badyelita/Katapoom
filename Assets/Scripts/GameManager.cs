@@ -100,6 +100,10 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
         HudCartas.SetActive(true);
         HudBloques.SetActive(false);
+        if (buildingUp) {
+            Destroy(spawnBlock);
+            buildingUp = false;
+        }
 
         changeFaseButtonToAttack.gameObject.SetActive(true);
         changeFaseButtonToCards.gameObject.SetActive(false);

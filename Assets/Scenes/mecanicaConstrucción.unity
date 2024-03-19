@@ -2515,6 +2515,7 @@ MonoBehaviour:
   HudBloques: {fileID: 31396797}
   HudCartas: {fileID: 1711735409}
   textContador: {fileID: 1472629822}
+  HudJuego: {fileID: 31396797}
   changeFaseButtonToAttack: {fileID: 0}
   changeFaseButtonToDefense: {fileID: 0}
   changeFaseButtonToCards: {fileID: 784889604}
@@ -2546,10 +2547,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countBlocks: 0
-  countPoints: 0
   block: {fileID: 8402551008408309344, guid: 97456772dcac55942ab50a1560b5ab4a, type: 3}
-  textCountBlocks: {fileID: 1472629822}
-  textCountPoints: {fileID: 1532073522}
+  textBlocks: {fileID: 1472629822}
   isSpeaking: 0
 --- !u!1 &2077484360
 GameObject:
