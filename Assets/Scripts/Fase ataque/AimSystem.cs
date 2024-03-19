@@ -22,7 +22,7 @@ public class AimSystem : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(GameManager.Instance.playingState==PlayingState.Attack)
+        if(GameManager.Instance.playingState==PlayingState.Attack )
         {
             AimingKatapult();
         }
@@ -50,7 +50,7 @@ public class AimSystem : MonoBehaviour
     void Update()
     {
         
-        if(Input.GetKeyUp(KeyCode.Space) && GameManager.Instance.playingState == PlayingState.Attack)
+        if(Input.GetKeyUp(KeyCode.Space) && GameManager.Instance.playingState == PlayingState.Attack && GameManager.Instance.gameState == GameState.Playing)
         {
             Shooting(force);
         }

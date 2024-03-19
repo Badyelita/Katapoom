@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject HudBloques;
     [SerializeField] GameObject HudCartas;
     [SerializeField] TMP_Text textContador;
+    [SerializeField] GameObject HudJuego;
     [SerializeField] Button changeFaseButtonToAttack;
     [SerializeField] Button changeFaseButtonToDefense;
     [SerializeField] Button changeFaseButtonToCards;
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
             changeFaseButtonToCards.gameObject.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            HudJuego.SetActive(true);
         }
 
         if(GameManager.Instance.gameState==GameState.Ready)
@@ -66,6 +68,7 @@ public class GameManager : MonoBehaviour
             HudBloques.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            HudJuego.SetActive(false);
         }
     }
 
