@@ -30,21 +30,39 @@ public class Draggable : MonoBehaviour
             Ray casepoint = Camera.main.ScreenPointToRay(mouse);
             RaycastHit hit;
 
-            if (Physics.Raycast(casepoint, out hit, Mathf.Infinity) && (hit.collider.gameObject.CompareTag("Arena") || hit.collider.gameObject.CompareTag("Block")) && canMove)
+            if (Physics.Raycast(casepoint, out hit, Mathf.Infinity) && canMove)
             {
 
                 bc.enabled = false;
                 rb.isKinematic = true;
 
-                if (isDoll)
+                if (hit.collider.gameObject.CompareTag("Arena"))
                 {
-                    rb.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-                }
-                else {
-                    rb.position = new Vector3(hit.point.x, hit.point.y + transform.localScale.y / 2, hit.point.z);
-                    if (Input.GetKeyDown(KeyCode.R)) {
-                        rb.transform.Rotate(new Vector3(0, 90));
+                    if (isDoll)
+                    {
+                        rb.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
                     }
+                    else
+                    {
+                        rb.position = new Vector3(hit.point.x, hit.point.y + transform.localScale.y / 2, hit.point.z);
+                    }
+                }
+
+                else if (hit.collider.gameObject.CompareTag("Block")) 
+                {
+                    if (isDoll)
+                    {
+                        rb.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+                    }
+                    else
+                    {
+                        transform.position = new Vector3(hit.collider.gameObject.transform.position.x, hit.collider.gameObject.transform.position.y + transform.localScale.y, hit.collider.gameObject.transform.position.z);
+                    }
+                }
+
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    rb.transform.Rotate(new Vector3(0, 90));
                 }
             }
         }
