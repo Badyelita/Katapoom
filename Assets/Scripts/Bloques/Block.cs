@@ -12,7 +12,6 @@ public class Block : MonoBehaviour, IDraggable
     Ray casepoint;
     [SerializeField] private LayerMask blockLayer;
 
-
     public void SetNormalBlock() {
         rb.mass = 1f;
     }
@@ -37,6 +36,8 @@ public class Block : MonoBehaviour, IDraggable
         if (GameManager.Instance.playingState == PlayingState.Defense && !GameManager.Instance.buildingUp && Input.GetMouseButtonDown(1) && canMove)
         {
             Destroy(gameObject);
+            //gameObject.SetActive(false);
+
             HudManager.Instance.countBlocks -= 1;
             HudManager.Instance.UpdateCountBlocks();
         }

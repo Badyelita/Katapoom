@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnPreview : MonoBehaviour
 {
-    //Esta clase se encarga de spawnear el bloque
+    //Esta clase se encarga de spawnear el preview del bloque
 
     [SerializeField] private GameObject previewBlock;
     [SerializeField] private Block scriptBlock;
@@ -12,7 +12,7 @@ public class SpawnPreview : MonoBehaviour
     private void Update()
     {
 
-        // En este update la estructura mas logica para controlar que tecla pulsa el usuario es un switch, no un if
+        
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             InstantiateBlock(previewBlock);
