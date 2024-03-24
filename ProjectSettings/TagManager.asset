@@ -9,6 +9,7 @@ TagManager:
   - Arena
   - countBlock
   - Doll
+  - countPointsBlock
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - MesaJuego
   - Block
   - Mostro
-  - 
+  - Arena
   - 
   - 
   - 
