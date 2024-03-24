@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class CreateBlock : MonoBehaviour
 {
-    // Esta clase se encarga del crear el bloque al hacer clic izquierdo y destruirlo al hacer clic derecho
-    public GameObject previewBlock;
+    // Esta clase se encarga del crear el bloque al hacer clic izquierdo y destruir el preview del bloque al hacer click derecho
+    
     public GameObject block;
-    //private GameObject spawnBlock;
 
     void Update()
     {
@@ -17,6 +16,7 @@ public class CreateBlock : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && GameManager.Instance.buildingUp && GameManager.Instance.onTheArena && HudManager.Instance.countBlocks <= 15)
             {
                 Instantiate(block, GameManager.Instance.spawnBlock.transform.position, GameManager.Instance.spawnBlock.transform.rotation);
+
                 HudManager.Instance.countBlocks += 1;
                 HudManager.Instance.UpdateCountBlocks();
             }
