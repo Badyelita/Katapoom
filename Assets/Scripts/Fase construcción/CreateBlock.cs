@@ -16,15 +16,6 @@ public class CreateBlock : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && GameManager.Instance.buildingUp && GameManager.Instance.onTheArena && HudManager.Instance.countBlocks <= 15)
             {
                 Instantiate(block, GameManager.Instance.spawnBlock.transform.position, GameManager.Instance.spawnBlock.transform.rotation);
-                /*GameObject block = ObjectPool.instance.GetPooledObject();
-
-                if (block != null) {
-                    block.transform.position = GameManager.Instance.spawnBlock.transform.position;
-                    block.SetActive(true);
-
-                    HudManager.Instance.countBlocks += 1;
-                    HudManager.Instance.UpdateCountBlocks();
-                }*/
 
                 HudManager.Instance.countBlocks += 1;
                 HudManager.Instance.UpdateCountBlocks();

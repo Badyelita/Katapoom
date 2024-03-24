@@ -36,7 +36,6 @@ public class Block : MonoBehaviour, IDraggable
         if (GameManager.Instance.playingState == PlayingState.Defense && !GameManager.Instance.buildingUp && Input.GetMouseButtonDown(1) && canMove)
         {
             Destroy(gameObject);
-            //gameObject.SetActive(false);
 
             HudManager.Instance.countBlocks -= 1;
             HudManager.Instance.UpdateCountBlocks();
