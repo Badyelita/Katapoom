@@ -12,6 +12,7 @@ public class AimSystem : MonoBehaviour
 
     public GameObject Projectile;
     public Transform ShootPoint;
+    [SerializeField] private GameObject PauseManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,8 @@ public class AimSystem : MonoBehaviour
         {
             AimingKatapult();
         }
-        if(Input.GetKey(KeyCode.Space)){
+        if(Input.GetKey(KeyCode.Space)&& GameManager.Instance.playingState == PlayingState.Attack && GameManager.Instance.gameState == GameState.Playing){
+            PauseManager.GetComponent<PauseManager>().enabled = false;
             if(min)
             {
                 force+=0.05f;
@@ -75,5 +77,6 @@ public class AimSystem : MonoBehaviour
         GameObject CreatedProjectile = Instantiate(Projectile, ShootPoint.position, ShootPoint.rotation);
         CreatedProjectile.GetComponent<Rigidbody>().velocity = ShootPoint.transform.up * forceShoot;
         force=3f;
+        PauseManager.GetComponent<PauseManager>().enabled = true;
     }
 }

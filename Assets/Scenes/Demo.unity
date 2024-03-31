@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2510,11 +2510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 798d34e3b4151194490e786a6a9d392f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bc: {fileID: 264119370}
-  rb: {fileID: 264119372}
-  whatToDetect:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!54 &264119372
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5068,11 +5063,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 798d34e3b4151194490e786a6a9d392f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bc: {fileID: 442210991}
-  rb: {fileID: 442210993}
-  whatToDetect:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!54 &442210993
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14558,6 +14548,7 @@ MonoBehaviour:
   force: 0
   Projectile: {fileID: 0}
   ShootPoint: {fileID: 0}
+  PauseManager: {fileID: 0}
 --- !u!1 &1196069648
 GameObject:
   m_ObjectHideFlags: 0
@@ -18487,6 +18478,7 @@ MonoBehaviour:
   force: 3
   Projectile: {fileID: 637468246694906687, guid: 9d2d0acff458f3a4b99ee404451fe3d6, type: 3}
   ShootPoint: {fileID: 615734501}
+  PauseManager: {fileID: 1124931259}
 --- !u!120 &1541432250
 LineRenderer:
   serializedVersion: 2
@@ -20984,7 +20976,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1484393043c8b4caaa6fd07d67e57e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previewBlock: {fileID: 8442688151887397450, guid: 80e52dfc3a59f1046a1159816df5874d, type: 3}
   block: {fileID: 8402551008408309344, guid: 97456772dcac55942ab50a1560b5ab4a, type: 3}
 --- !u!1 &1830087731
 GameObject:
@@ -22722,11 +22713,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 798d34e3b4151194490e786a6a9d392f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bc: {fileID: 1957273973}
-  rb: {fileID: 1957273975}
-  whatToDetect:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!54 &1957273975
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23098,11 +23084,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 798d34e3b4151194490e786a6a9d392f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bc: {fileID: 1966253290}
-  rb: {fileID: 1966253292}
-  whatToDetect:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!54 &1966253292
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24556,11 +24537,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 798d34e3b4151194490e786a6a9d392f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bc: {fileID: 2033084186}
-  rb: {fileID: 2033084188}
-  whatToDetect:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!54 &2033084188
 Rigidbody:
   m_ObjectHideFlags: 0
