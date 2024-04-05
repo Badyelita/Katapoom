@@ -55,7 +55,7 @@ public class RaycastStart : MonoBehaviour
             Move();
         }
 
-        if (HudManager.Instance.isSpeaking)
+        if (HudManager.Instance.isSpeaking && !inGame)
         {
             dialogPanel.SetActive(true);
             dialogPanel.GetComponent<DialogoScript>().enabled = true;
@@ -75,6 +75,11 @@ public class RaycastStart : MonoBehaviour
         if (exitGame)
         {
             ExitGame();
+        }
+
+        if(inGame)
+        {
+            player.GetComponent<PlayerMov>().enabled = false;
         }
 
     }
@@ -108,6 +113,7 @@ public class RaycastStart : MonoBehaviour
         {
             player.GetComponent<PlayerMov>().enabled = true;
             exitGame = false;
+            inGame = false;
             GameManager.Instance.UpdateGameState(GameState.Ready);
             GameManager.Instance.UpdatePlayingState(PlayingState.None);
         }
