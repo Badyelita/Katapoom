@@ -7,6 +7,7 @@ public class Block : MonoBehaviour, IDraggable
 {
     [SerializeField] public Rigidbody rb;
     private bool canMove;
+    private bool istouching = false;
 
     RaycastHit hit;
     Ray casepoint;
@@ -46,7 +47,7 @@ public class Block : MonoBehaviour, IDraggable
     {
         if (!GameManager.Instance.buildingUp && GameManager.Instance.playingState == PlayingState.Defense)
         {
-            dragGO();
+            DragGO();
             RotateBlock();
         }
     }
@@ -54,6 +55,7 @@ public class Block : MonoBehaviour, IDraggable
     private void OnMouseUp()
     {
         gameObject.layer = LayerMask.NameToLayer("Block");
+        rb.isKinematic = true;
     }
 
     private void Update()
@@ -69,15 +71,26 @@ public class Block : MonoBehaviour, IDraggable
         }
     }
 
-    public void dragGO()
+    private void RotateBlock()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            transform.Rotate(new Vector3(0, 90));
+        }
+    }
+
+    public void DragGO()
     {
         Vector3 mouse = Input.mousePosition;
         Ray casepoint = Camera.main.ScreenPointToRay(mouse);
         RaycastHit hit;
 
-        if (Physics.Raycast(casepoint, out hit, Mathf.Infinity) && canMove)
+        rb.isKinematic = false;
+
+        gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+
+        if (Physics.Raycast(casepoint, out hit, Mathf.Infinity) && canMove && !istouching)
         {
-            gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
 
             if (hit.collider.gameObject.CompareTag("Arena"))
             {
@@ -89,14 +102,22 @@ public class Block : MonoBehaviour, IDraggable
                 transform.position = new Vector3(hit.collider.gameObject.transform.position.x, hit.collider.gameObject.transform.position.y + transform.localScale.y, hit.collider.gameObject.transform.position.z);
             }
         }
-        
+
+        if (istouching) {
+            gameObject.layer = LayerMask.NameToLayer("Block");
+            Physics.Raycast(casepoint, out hit, Mathf.Infinity);
+
+            if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Arena"))
+            {
+                istouching = false;
+            }
+        }
     }
 
-    private void RotateBlock()
+    private void OnCollisionEnter(Collision collision)
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            transform.Rotate(new Vector3(0, 90));
+        if (collision.gameObject.CompareTag("Doll")) {
+            istouching = true;
         }
     }
 }

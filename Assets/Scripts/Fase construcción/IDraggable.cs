@@ -1,4 +1,4 @@
 public interface IDraggable
 {
-    void dragGO();
+    void DragGO();
 }
