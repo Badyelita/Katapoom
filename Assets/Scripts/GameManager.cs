@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] Button changeFaseButtonToDefense;
     [SerializeField] Button changeFaseButtonToCards;
 
+    [SerializeField] GameObject katapult;
+    [SerializeField] GameObject ballista;
+
     public static GameManager Instance { get; private set; }
     
 
@@ -82,7 +85,7 @@ public class GameManager : MonoBehaviour
         playingState=newPlayingState;
     }
 
-        public void ChangeFaseAttack()
+    public void ChangeFaseAttack()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -92,6 +95,9 @@ public class GameManager : MonoBehaviour
         
         changeFaseButtonToDefense.gameObject.SetActive(true);
         changeFaseButtonToAttack.gameObject.SetActive(false);
+
+        ballista.SetActive(false);
+        katapult.SetActive(false);
     }
 
     public void ChangeFaseCards() {
@@ -120,5 +126,8 @@ public class GameManager : MonoBehaviour
 
         changeFaseButtonToCards.gameObject.SetActive(true);
         changeFaseButtonToDefense.gameObject.SetActive(false);
+
+        ballista.SetActive(true);
+        katapult.SetActive(true);
     }
 }
