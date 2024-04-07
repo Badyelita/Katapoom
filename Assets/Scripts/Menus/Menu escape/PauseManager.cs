@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class PauseManager : MonoBehaviour
     public GameObject menuExit;
     public GameObject menuOptions;
     public GameObject dialogPanel;
+    public GameObject HudJuego;
+    public bool playing;
     
     // Start is called before the first frame update
     void Start()
@@ -31,6 +34,9 @@ public class PauseManager : MonoBehaviour
             }
             
         }
+
+        Debug.Log(GameManager.Instance.gameState);
+        Debug.Log(GameManager.Instance.playingState);
     }
 
 
@@ -39,9 +45,19 @@ public class PauseManager : MonoBehaviour
         menuPause.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        if (GameManager.Instance.gameState == GameState.Ready)
+        {
+            playing = false;
+        }
+        else
+        {
+            playing = true;
+            HudJuego.SetActive(false);
+        }
         GameManager.Instance.UpdateGameState(GameState.Paused);
         Time.timeScale=0f;
         dialogPanel.SetActive(false);
+        
 
         isPaused =true;
     }
@@ -51,9 +67,25 @@ public class PauseManager : MonoBehaviour
         menuPause.SetActive(false);
         menuExit.SetActive(false);
         menuOptions.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        GameManager.Instance.UpdateGameState(GameState.Ready);
+        
+        
+        if (playing)
+        {
+            GameManager.Instance.UpdateGameState(GameState.Playing);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            HudJuego.SetActive(true);
+        }
+        else
+        {
+            GameManager.Instance.UpdateGameState(GameState.Ready);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            HudJuego.SetActive(false);
+
+            Debug.Log(GameManager.Instance.gameState);
+        }
+        
         Time.timeScale=1.0f;
         //StartCoroutine(dialogPanel.GetComponent<DialogoScript>().coroutine);
 
