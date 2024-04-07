@@ -101,19 +101,18 @@ public class GameManager : MonoBehaviour
     }
 
     public void ChangeFaseCards() {
-        GameManager.Instance.UpdatePlayingState(PlayingState.Cards);
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        HudCartas.SetActive(true);
-        HudBloques.SetActive(false);
-        if (buildingUp) {
-            Destroy(spawnBlock);
-            buildingUp = false;
+
+        if (!buildingUp)
+        {
+            GameManager.Instance.UpdatePlayingState(PlayingState.Cards);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            HudCartas.SetActive(true);
+            HudBloques.SetActive(false);
+
+            changeFaseButtonToAttack.gameObject.SetActive(true);
+            changeFaseButtonToCards.gameObject.SetActive(false);
         }
-
-        changeFaseButtonToAttack.gameObject.SetActive(true);
-        changeFaseButtonToCards.gameObject.SetActive(false);
-
     }
 
     public void ChangeFaseDefense()
