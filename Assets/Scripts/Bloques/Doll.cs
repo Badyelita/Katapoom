@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class Doll : MonoBehaviour, IDraggable
 {
+
+#if UNITY_ANDROID
+    Touch touch;
+#endif
     [SerializeField] private Rigidbody rb;
 
     [SerializeField] private LayerMask layers;
@@ -42,10 +46,12 @@ public class Doll : MonoBehaviour, IDraggable
             rb.isKinematic = false;
             
             isDragging = true;
+
+#if UNITY_EDITOR_WIN || UNITY_EDITOR_OSX || UNITY_EDITOR_LINUX
+
             if (Physics.Raycast(casepoint, out hit, Mathf.Infinity, layers) && canMove)
             {
                 transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-
             }
 
             if (!canMove) {
@@ -55,6 +61,33 @@ public class Doll : MonoBehaviour, IDraggable
                     canMove = true;
                 }
             }
-        }
+
+#endif
+
+#if UNITY_ANDROID
+
+            touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Moved)
+            {
+                if (Physics.Raycast(casepoint, out hit, Mathf.Infinity, layers) && canMove)
+                {
+                    transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+                }
+
+                if (!canMove)
+                {
+                    Physics.Raycast(casepoint, out hit, Mathf.Infinity);
+
+                    if (hit.collider != null && hit.collider.gameObject.layer == LayerMask.NameToLayer("Arena"))
+                    {
+                        canMove = true;
+                    }
+                }
+            }
+
+#endif
+
+            }
     }
 }

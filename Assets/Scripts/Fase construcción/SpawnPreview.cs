@@ -11,8 +11,6 @@ public class SpawnPreview : MonoBehaviour
 
     private void Update()
     {
-
-        
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             InstantiateBlock(previewBlock);
