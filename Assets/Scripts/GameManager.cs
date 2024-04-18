@@ -23,6 +23,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] Button changeFaseButtonToAttack;
     [SerializeField] Button changeFaseButtonToDefense;
     [SerializeField] Button changeFaseButtonToCards;
+    [SerializeField] GameObject Joystick1;
+    [SerializeField] GameObject Joystick2;
+    [SerializeField] Button buttonIzq;
+    [SerializeField] Button buttonDer;
+    [SerializeField] Button buttonShot;
+
 
     public static GameManager Instance { get; private set; }
     
@@ -51,7 +57,10 @@ public class GameManager : MonoBehaviour
     { 
         if(gameState==GameState.Playing && playingState==PlayingState.Defense)
         {
-            //TODO: Cambiarlo al GameManager
+            //Control Android
+            Joystick1.gameObject.SetActive(false);
+            Joystick2.gameObject.SetActive(false);
+
             textContador.gameObject.SetActive(true);
             HudBloques.SetActive(true);
             changeFaseButtonToCards.gameObject.SetActive(true);
@@ -62,12 +71,12 @@ public class GameManager : MonoBehaviour
 
         if(GameManager.Instance.gameState==GameState.Ready)
         {
-            //TODO: Cambiarlo al GameManager
+            
             changeFaseButtonToCards.gameObject.SetActive(false);
             textContador.gameObject.SetActive(false);
             HudBloques.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            //Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
             HudJuego.SetActive(false);
         }
     }
@@ -84,6 +93,11 @@ public class GameManager : MonoBehaviour
 
         public void ChangeFaseAttack()
     {
+        //MIRAR ESTO
+        buttonIzq.gameObject.SetActive(true);
+        buttonDer.gameObject.SetActive(true);
+        buttonShot.gameObject.SetActive(true);
+        
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         GameManager.Instance.UpdatePlayingState(PlayingState.Attack);
@@ -112,6 +126,9 @@ public class GameManager : MonoBehaviour
 
     public void ChangeFaseDefense()
     {
+        buttonIzq.gameObject.SetActive(false);
+        buttonDer.gameObject.SetActive(false);
+        buttonShot.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         GameManager.Instance.UpdatePlayingState(PlayingState.Defense);

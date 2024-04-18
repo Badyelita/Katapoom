@@ -16,6 +16,8 @@ public class PlayerMov : MonoBehaviour
 
     Vector3 movementDir;
 
+    public GameObject Joystick;
+
     Rigidbody rb;
 
     private void Start()
@@ -38,8 +40,11 @@ public class PlayerMov : MonoBehaviour
 
     private void MyInput()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
+        //Control Android
+        horizontalInput = Joystick.gameObject.GetComponent<FixedJoystick>().Horizontal;
+        verticalInput = Joystick.gameObject.GetComponent<FixedJoystick>().Vertical;
+
+        Debug.Log(horizontalInput);
     }
 
     private void MovePlayer()

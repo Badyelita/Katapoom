@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class AimSystem : MonoBehaviour
+public class AimSystem : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
 {
     [SerializeField] float rotationSpeed=0.3f;
     public float BlastPower = 5;
 
     public float force;
     bool min;
-
+    bool pressed=false;
+    bool soltado;
     public GameObject Projectile;
     public Transform ShootPoint;
     [SerializeField] private GameObject PauseManager;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +32,8 @@ public class AimSystem : MonoBehaviour
         {
             AimingKatapult();
         }
-        if(Input.GetKey(KeyCode.Space)&& GameManager.Instance.playingState == PlayingState.Attack && GameManager.Instance.gameState == GameState.Playing){
+
+        if(pressed && GameManager.Instance.playingState == PlayingState.Attack && GameManager.Instance.gameState == GameState.Playing){
             PauseManager.GetComponent<PauseManager>().enabled = false;
             if(min)
             {
@@ -52,10 +58,14 @@ public class AimSystem : MonoBehaviour
     void Update()
     {
         
-        if(Input.GetKeyUp(KeyCode.Space) && GameManager.Instance.playingState == PlayingState.Attack && GameManager.Instance.gameState == GameState.Playing)
+        if(soltado && GameManager.Instance.playingState == PlayingState.Attack && GameManager.Instance.gameState == GameState.Playing)
         {
             Shooting(force);
+            soltado=false;
         }
+        
+        
+
     }
 
 
@@ -71,12 +81,28 @@ public class AimSystem : MonoBehaviour
         }
     }
 
-    //Transformar lo del if en un metodo
-    void Shooting(float forceShoot)
+//NO SE QUE PASA VOY A NECESITAR OTRO SCRIPT DONDE CONTROLAR SI ESTA PRESIONADO Y SI ESTA PRESIONADO GIRAR LA KATAPULTA EN EL UPDATE
+
+
+    
+    public void Shooting(float forceShoot)
     {
         GameObject CreatedProjectile = Instantiate(Projectile, ShootPoint.position, ShootPoint.rotation);
         CreatedProjectile.GetComponent<Rigidbody>().velocity = ShootPoint.transform.up * forceShoot;
         force=3f;
         PauseManager.GetComponent<PauseManager>().enabled = true;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        pressed=true;
+        soltado=false;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        pressed=false;
+        soltado=true;
+        
     }
 }

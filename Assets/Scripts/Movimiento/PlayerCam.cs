@@ -11,18 +11,21 @@ public class PlayerCam : MonoBehaviour
 
     float yRotation;
     float xRotation;
+    public GameObject JoystickLook;
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         //Obtener el Input del raton
-        float ratonX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-        float ratonY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+
+        //Control Android
+        float ratonX = JoystickLook.gameObject.GetComponent<FixedJoystick>().Horizontal * Time.deltaTime * sensY;
+        float ratonY = JoystickLook.gameObject.GetComponent<FixedJoystick>().Vertical * Time.deltaTime * sensY;
 
         yRotation += ratonX;
         xRotation -= ratonY;

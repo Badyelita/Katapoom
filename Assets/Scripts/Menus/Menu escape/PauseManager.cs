@@ -79,8 +79,8 @@ public class PauseManager : MonoBehaviour
         else
         {
             GameManager.Instance.UpdateGameState(GameState.Ready);
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
+            //Cursor.lockState = CursorLockMode.Locked;
             HudJuego.SetActive(false);
 
             Debug.Log(GameManager.Instance.gameState);
