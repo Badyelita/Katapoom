@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] Button buttonShot;
 
 
+    [SerializeField] GameObject katapult;
+    [SerializeField] GameObject ballista;
+
     public static GameManager Instance { get; private set; }
     
 
@@ -91,7 +94,7 @@ public class GameManager : MonoBehaviour
         playingState=newPlayingState;
     }
 
-        public void ChangeFaseAttack()
+    public void ChangeFaseAttack()
     {
         //MIRAR ESTO
         buttonIzq.gameObject.SetActive(true);
@@ -106,22 +109,24 @@ public class GameManager : MonoBehaviour
         
         changeFaseButtonToDefense.gameObject.SetActive(true);
         changeFaseButtonToAttack.gameObject.SetActive(false);
+
+        ballista.SetActive(false);
+        katapult.SetActive(false);
     }
 
     public void ChangeFaseCards() {
-        GameManager.Instance.UpdatePlayingState(PlayingState.Cards);
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        HudCartas.SetActive(true);
-        HudBloques.SetActive(false);
-        if (buildingUp) {
-            Destroy(spawnBlock);
-            buildingUp = false;
+
+        if (!buildingUp)
+        {
+            GameManager.Instance.UpdatePlayingState(PlayingState.Cards);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            HudCartas.SetActive(true);
+            HudBloques.SetActive(false);
+
+            changeFaseButtonToAttack.gameObject.SetActive(true);
+            changeFaseButtonToCards.gameObject.SetActive(false);
         }
-
-        changeFaseButtonToAttack.gameObject.SetActive(true);
-        changeFaseButtonToCards.gameObject.SetActive(false);
-
     }
 
     public void ChangeFaseDefense()
@@ -137,5 +142,8 @@ public class GameManager : MonoBehaviour
 
         changeFaseButtonToCards.gameObject.SetActive(true);
         changeFaseButtonToDefense.gameObject.SetActive(false);
+
+        ballista.SetActive(true);
+        katapult.SetActive(true);
     }
 }
